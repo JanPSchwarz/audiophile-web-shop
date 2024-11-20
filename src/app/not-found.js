@@ -1,15 +1,19 @@
 "use client";
 
 import DefaultError from "@/components/general/DefaultError";
-import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 
 export default function NotFound() {
-  const path = usePathname();
+  const [url, setURL] = useState();
+
+  useEffect(() => {
+    setURL(window.location.href);
+  }, []);
 
   return (
     <>
       <DefaultError
-        errorMessage={`404 - requested source doesn't exist:\n\nwww.test.de${path}`}
+        errorMessage={`404 - requested source doesn't exist:\n\n${url}`}
       />
     </>
   );

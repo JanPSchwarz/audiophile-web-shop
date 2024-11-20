@@ -12,7 +12,7 @@ export default function ProductCount({
     <>
       <div
         className={twMerge(
-          `grid grid-cols-3 items-center gap-1 justify-center rounded-sm bg-lightColor`,
+          `grid grid-cols-3 items-center justify-center gap-4 rounded-sm bg-lightColor`,
           className,
         )}
       >
