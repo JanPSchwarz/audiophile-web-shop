@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import useClientWidth from "@/Hooks/useClientWidth";
+import useClientWidth from "@/hooks/useClientWidth";
 import { useState, useEffect } from "react";
 import { twMerge } from "tailwind-merge";
 import { motion } from "framer-motion";

@@ -8,7 +8,7 @@ import useLocalStorageState from "use-local-storage-state";
 
 import MobileNavigation from "./MobileNavigation";
 import DesktopNavigation from "./DesktopNavigation";
-import useClientWidth from "@/Hooks/useClientWidth";
+import useClientWidth from "@/hooks/useClientWidth";
 import BurgerMenu from "./BurgerMenu";
 import Cart from "./Cart";
 

@@ -1,6 +1,6 @@
 import data from "@/lib/data";
 
-import PreviewProductCard from "@/Components/CategoryPage/PreviewProductCard";
+import PreviewProductCard from "@/components/CategoryPage/PreviewProductCard";
 
 export default async function Category({ params }) {
   const { category } = await params;
