@@ -21,7 +21,7 @@ export default function About({ params }) {
             <ResponsiveStaticImage
               alt={"model wearing audiophile headphones"}
               defaultSrc={BestGearTabletPic}
-              sizes="(min-width: 1024px) 50vw, 100vw"
+              // sizes="(min-width: 1024px) 50vw, 100vw"
               className={`rounded-md object-cover`}
               fill
               animations={{
