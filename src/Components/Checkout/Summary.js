@@ -1,5 +1,5 @@
-import LinkButton from "../General/LinkButton";
-import CartItem from "../Header/CartItem";
+import LinkButton from "../general/LinkButton";
+import CartItem from "../header/CartItem";
 
 export default function Summary({ onSubmit, totalAmount, cart }) {
   const amounts = [

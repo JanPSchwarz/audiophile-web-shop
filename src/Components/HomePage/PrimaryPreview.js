@@ -1,5 +1,5 @@
-import ResponsiveStaticImage from "../General/ResponsiveStaticImage";
-import LinkButton from "../General/LinkButton";
+import ResponsiveStaticImage from "../general/ResponsiveStaticImage";
+import LinkButton from "../general/LinkButton";
 import SpeakersImageDesktop from "@/assets/images/home/mobile/image-speaker-zx9.png";
 import Circles from "@/assets/svgs/pattern-circles.svg";
 

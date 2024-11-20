@@ -1,7 +1,7 @@
-import ResponsiveStaticImage from "../General/ResponsiveStaticImage";
+import ResponsiveStaticImage from "../general/ResponsiveStaticImage";
 import ProductGallery from "./ProductGallery";
 import ProductsPreview from "./ProductsPreview";
-import GoBack from "../General/GoBack";
+import GoBack from "../general/GoBack";
 import AddToCart from "./AddToCart";
 
 export default function DetailsProductCard({ product, category }) {

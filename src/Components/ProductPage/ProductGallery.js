@@ -1,4 +1,4 @@
-import ResponsiveStaticImage from "../General/ResponsiveStaticImage";
+import ResponsiveStaticImage from "../general/ResponsiveStaticImage";
 
 export default function ProductGallery({ images, alt }) {
   const { first: firstImage, second: secondImage, third: thirdImage } = images;
