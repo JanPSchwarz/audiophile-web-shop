@@ -1,5 +1,5 @@
-import LinkButton from "../General/LinkButton";
-import ResponsiveStaticImage from "../General/ResponsiveStaticImage";
+import LinkButton from "../general/LinkButton";
+import ResponsiveStaticImage from "../general/ResponsiveStaticImage";
 
 import HeadphoneImageDesktop from "@/assets/images/home/desktop/image-hero.jpg";
 import HeadphoneImageTablet from "@/assets/images/home/tablet/image-hero.jpg";

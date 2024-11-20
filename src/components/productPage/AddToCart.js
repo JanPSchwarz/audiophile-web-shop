@@ -1,7 +1,7 @@
 "use client";
 
-import ProductCount from "../General/ProductCount";
-import LinkButton from "../General/LinkButton";
+import ProductCount from "../general/ProductCount";
+import LinkButton from "../general/LinkButton";
 import { useReducer } from "react";
 import useLocalStorageState from "use-local-storage-state";
 
