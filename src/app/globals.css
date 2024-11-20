@@ -3,14 +3,37 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --primaryColor: 0, 0, 0;
+  --primaryColorLight: 16, 16, 16;
+  --secondaryColor: 255, 255, 255;
+  --secondaryColorLight: 250, 250, 250;
+  --lightColor: 241, 241, 241;
+  --accentColor: 216, 125, 74;
+  --accentColorLight: 251, 175, 133;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* Applies hover states throughout buttons, links and svg's */
+@media (hover: hover) and (pointer: fine) {
+  a:hover,
+  button:hover {
+    color: rgb(var(--accentColor));
+  }
+
+  a svg:hover {
+    cursor: pointer;
+    fill: rgb(var(--accentColor));
+  }
+
+  button svg:hover {
+    cursor: pointer;
+    fill: rgb(var(--accentColor));
+  }
+}
+
+@media (hover: none) and (pointer: coarse) {
+  a:active,
+  button:active {
+    transform: scale(0.9);
   }
 }
 
@@ -20,8 +43,90 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+button {
+  user-select: none;
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+
+  .customFocus:focus {
+    outline: none;
+  }
+
+  .customFocus:focus-visible {
+    outline: -webkit-focus-ring-color auto 1px;
+  }
+
+  .fontPreset1 {
+    font-size: 3.6rem;
+    font-weight: 600;
+    line-height: 3.6rem;
+    letter-spacing: 2px;
+  }
+
+  .fontPreset2 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    line-height: 2.75rem;
+    letter-spacing: 1.5px;
+  }
+  .fontPreset3 {
+    font-size: 2rem;
+    font-weight: 600;
+    line-height: 2.25rem;
+    letter-spacing: 1.15px;
+  }
+  .fontPreset4 {
+    font-size: 1.75rem;
+    font-weight: 600;
+    line-height: 2.6rem;
+    letter-spacing: 2px;
+  }
+  .fontPreset5 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 2.1rem;
+    letter-spacing: 1.7px;
+  }
+  .fontPreset6 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    line-height: 1.5rem;
+    letter-spacing: 1.3px;
+  }
+
+  .fontPreset7 {
+    font-size: 0.94rem;
+    line-height: 1.5rem;
+  }
+
+  .fontPreset8 {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    letter-spacing: 1.3px;
+  }
+  .fontPreset9 {
+    font-size: 0.8rem;
+    font-weight: 600;
+    line-height: 1.5rem;
+    letter-spacing: 1px;
+  }
+
+  @keyframes wiggle {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-8px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+  .wiggle {
+    animation: wiggle 350ms infinite ease-in-out;
   }
 }

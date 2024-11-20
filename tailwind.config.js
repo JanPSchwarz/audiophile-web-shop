@@ -8,10 +8,21 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        primaryColor: "rgba(var(--primaryColor), <alpha-value>)",
+        primaryColorLight: "rgba(var(--primaryColorLight), <alpha-value>)",
+        secondaryColor: "rgba(var(--secondaryColor), <alpha-value>)",
+        secondaryColorLight: "rgba(var(--secondaryColorLight), <alpha-value>)",
+        lightColor: "rgba(var(--lightColor), <alpha-value>)",
+        accentColor: "rgba(var(--accentColor), <alpha-value>)",
+        accentColorLight: "rgba(var(--accentColorLight), <alpha-value>)",
+      },
+      fontFamily: {
+        manrope: [`var(--manrope)`],
       },
     },
   },
-  plugins: [],
+  plugins: [require("tailwindcss-animate")],
+  future: {
+    hoverOnlyWhenSupported: true,
+  },
 };
