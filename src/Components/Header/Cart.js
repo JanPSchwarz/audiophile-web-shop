@@ -1,9 +1,9 @@
 "use client";
 
 import useLocalStorageState from "use-local-storage-state";
-import Modal from "../General/Modal";
+import Modal from "../general/Modal";
 import CartItem from "./CartItem";
-import LinkButton from "../General/LinkButton";
+import LinkButton from "../general/LinkButton";
 import { useState } from "react";
 
 export default function Cart({ closeCart }) {

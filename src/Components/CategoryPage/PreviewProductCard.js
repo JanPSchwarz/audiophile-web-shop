@@ -1,5 +1,5 @@
-import ResponsiveStaticImage from "../General/ResponsiveStaticImage";
-import LinkButton from "../General/LinkButton";
+import ResponsiveStaticImage from "../general/ResponsiveStaticImage";
+import LinkButton from "../general/LinkButton";
 
 export default function CategoryProductCard({ data, reverse, category }) {
   const {

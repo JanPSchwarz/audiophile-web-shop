@@ -1,4 +1,4 @@
-import LinkList from "../General/LinkList";
+import LinkList from "../general/LinkList";
 import Socials from "./Socials";
 
 import Logo from "@/assets/svgs/logo.svg";

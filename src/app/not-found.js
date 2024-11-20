@@ -1,6 +1,6 @@
 "use client";
 
-import DefaultError from "@/Components/General/DefaultError";
+import DefaultError from "@/components/general/DefaultError";
 import { usePathname } from "next/navigation";
 
 export default function NotFound() {

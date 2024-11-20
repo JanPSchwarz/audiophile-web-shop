@@ -1,8 +1,8 @@
-import CategoryPreviewLinks from "@/Components/General/CategoryPreviewLinks";
-import Hero from "@/Components/HomePage/Hero";
-import PrimaryPreview from "@/Components/HomePage/PrimaryPreview";
-import SecondaryPreview from "@/Components/HomePage/SecondaryPreview";
-import TertiaryPreview from "@/Components/HomePage/TertiaryPreview";
+import CategoryPreviewLinks from "@/components/general/CategoryPreviewLinks";
+import Hero from "@/components/homePage/Hero";
+import PrimaryPreview from "@/components/homePage/PrimaryPreview";
+import SecondaryPreview from "@/components/homePage/SecondaryPreview";
+import TertiaryPreview from "@/components/homePage/TertiaryPreview";
 
 export default function Home() {
   return (

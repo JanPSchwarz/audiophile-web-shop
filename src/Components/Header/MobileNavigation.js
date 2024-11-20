@@ -1,7 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import CategoryPreviewLinks from "../General/CategoryPreviewLinks";
+import CategoryPreviewLinks from "../general/CategoryPreviewLinks";
 
 export default function MobileNavigation({ closeNavigation, isVisible }) {
   return (

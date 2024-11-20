@@ -1,5 +1,5 @@
-import ResponsiveStaticImage from "../General/ResponsiveStaticImage";
-import LinkButton from "../General/LinkButton";
+import ResponsiveStaticImage from "../general/ResponsiveStaticImage";
+import LinkButton from "../general/LinkButton";
 
 import SpeakersImageDesktop from "@/assets/images/home/desktop/image-speaker-zx7.jpg";
 import SpeakersImageTablet from "@/assets/images/home/tablet/image-speaker-zx7.jpg";

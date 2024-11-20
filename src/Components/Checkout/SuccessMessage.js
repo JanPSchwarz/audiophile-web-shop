@@ -1,9 +1,9 @@
 "use client";
 
-import Modal from "../General/Modal";
+import Modal from "../general/Modal";
 import TickSVG from "@/assets/svgs/icon-order-confirmation.svg";
-import LinkButton from "../General/LinkButton";
-import CartItem from "../Header/CartItem";
+import LinkButton from "../general/LinkButton";
+import CartItem from "../header/CartItem";
 import { useEffect, useState } from "react";
 
 export default function SuccessMessage({ totalAmount, cart, emptyCart }) {

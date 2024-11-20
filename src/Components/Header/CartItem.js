@@ -1,7 +1,7 @@
 import cartImages from "@/lib/cartImages";
 
-import ResponsiveStaticImage from "../General/ResponsiveStaticImage";
-import ProductCount from "../General/ProductCount";
+import ResponsiveStaticImage from "../general/ResponsiveStaticImage";
+import ProductCount from "../general/ProductCount";
 import useLocalStorageState from "use-local-storage-state";
 
 export default function CartItem({ item, checkout }) {
