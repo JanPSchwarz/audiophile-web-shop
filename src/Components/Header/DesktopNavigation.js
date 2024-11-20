@@ -1,4 +1,4 @@
-import LinkList from "../General/LinkList";
+import LinkList from "../general/LinkList";
 import { motion } from "framer-motion";
 
 export default function DesktopNavigation({ isVisible }) {

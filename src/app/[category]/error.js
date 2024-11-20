@@ -1,6 +1,6 @@
 "use client";
 
-import DefaultError from "@/components/General/DefaultError";
+import DefaultError from "@/components/general/DefaultError";
 
 export default function ErrorComponent({ error, reset }) {
   return (

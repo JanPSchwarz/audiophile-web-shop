@@ -1,7 +1,7 @@
 "use client";
 
 import { notFound, useParams, useRouter } from "next/navigation";
-import CategoryPreviewLinks from "@/components/General/CategoryPreviewLinks";
+import CategoryPreviewLinks from "@/components/general/CategoryPreviewLinks";
 
 import data from "@/lib/data";
 

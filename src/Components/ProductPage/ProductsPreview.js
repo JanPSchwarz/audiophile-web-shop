@@ -1,5 +1,5 @@
-import LinkButton from "../General/LinkButton";
-import ResponsiveStaticImage from "../General/ResponsiveStaticImage";
+import LinkButton from "../general/LinkButton";
+import ResponsiveStaticImage from "../general/ResponsiveStaticImage";
 
 export default function ProductsPreview({ products }) {
   return (

@@ -2,10 +2,10 @@
 import { useRef, useState } from "react";
 import useLocalStorageState from "use-local-storage-state";
 
-import OrderForm from "@/components/Checkout/OrderForm";
-import Summary from "@/components/Checkout/Summary";
-import GoBack from "@/components/General/GoBack";
-import SuccessMessage from "@/components/Checkout/SuccessMessage";
+import OrderForm from "@/components/checkout/OrderForm";
+import Summary from "@/components/checkout/Summary";
+import GoBack from "@/components/general/GoBack";
+import SuccessMessage from "@/components/checkout/SuccessMessage";
 
 export default function Checkout() {
   const [cart, setCart] = useLocalStorageState(`audiophile_cart`);

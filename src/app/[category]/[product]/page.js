@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import DetailsProductCard from "@/components/ProductPage/DetailsProductCard";
+import DetailsProductCard from "@/components/productPage/DetailsProductCard";
 
 import data from "@/lib/data";
 

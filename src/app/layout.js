@@ -1,9 +1,9 @@
 import "./globals.css";
 import StyledJsxRegistry from "@/registries/styledJSXRegistry";
 import { Manrope } from "next/font/google";
-import Header from "@/components/Header/Header";
-import Footer from "@/components/Footer/Footer";
-import About from "@/components/General/About";
+import Header from "@/components/header/Header";
+import Footer from "@/components/footer/Footer";
+import About from "@/components/general/About";
 import { twMerge } from "tailwind-merge";
 
 const manrope = Manrope({
