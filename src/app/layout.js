@@ -5,6 +5,7 @@ import Header from "@/components/header/Header";
 import Footer from "@/components/footer/Footer";
 import About from "@/components/general/About";
 import { twMerge } from "tailwind-merge";
+import { StorageProvider } from "./context/Store";
 
 const manrope = Manrope({
   subsets: ["latin"],
@@ -26,12 +27,14 @@ export default async function RootLayout({ children, bodyClass }) {
           bodyClass,
         )}
       >
-        <Header />
-        <main className={`m-auto max-w-[1500px] overflow-x-hidden px-[6vw]`}>
-          <StyledJsxRegistry>{children}</StyledJsxRegistry>
-          <About />
-        </main>
-        <Footer />
+        <StorageProvider>
+          <Header />
+          <main className={`m-auto max-w-[1500px] overflow-x-hidden px-[6vw]`}>
+            <StyledJsxRegistry>{children}</StyledJsxRegistry>
+            <About />
+          </main>
+          <Footer />
+        </StorageProvider>
       </body>
     </html>
   );

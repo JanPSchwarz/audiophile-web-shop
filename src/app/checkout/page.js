@@ -1,6 +1,6 @@
 "use client";
 import { useRef, useState } from "react";
-import useLocalStorageState from "use-local-storage-state";
+import { useStore } from "../context/Store";
 
 import OrderForm from "@/components/checkout/OrderForm";
 import Summary from "@/components/checkout/Summary";
@@ -8,11 +8,11 @@ import GoBack from "@/components/general/GoBack";
 import SuccessMessage from "@/components/checkout/SuccessMessage";
 
 export default function Checkout() {
-  const [cart, setCart] = useLocalStorageState(`audiophile_cart`);
+  const { cart } = useStore();
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const totalAmount = cart?.reduce(
-    (memo, { price, number }) => memo + price * number,
+  const totalAmount = cart.reduce(
+    (memo, { price, quantity }) => memo + price * quantity,
     0,
   );
 
@@ -23,7 +23,7 @@ export default function Checkout() {
   function handleSubmit() {
     const form = formRef.current;
 
-    if (!form || cart?.length === 0) return;
+    if (!form || cart.length === 0) return;
     else if (!form.reportValidity()) return;
     else {
       const formData = new FormData(form);
@@ -38,10 +38,6 @@ export default function Checkout() {
       //* triggers success message
       setIsSubmitted(true);
     }
-  }
-
-  function emptyCart() {
-    setCart([]);
   }
 
   return (
@@ -61,13 +57,7 @@ export default function Checkout() {
             cart={cart}
           />
         </div>
-        {isSubmitted && (
-          <SuccessMessage
-            totalAmount={totalAmount}
-            cart={cart}
-            emptyCart={emptyCart}
-          />
-        )}
+        {isSubmitted && <SuccessMessage totalAmount={totalAmount} />}
       </div>
     </>
   );

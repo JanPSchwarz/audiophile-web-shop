@@ -1,50 +1,37 @@
+"use client";
+
 import cartImages from "@/lib/cartImages";
 
 import ResponsiveStaticImage from "../general/ResponsiveStaticImage";
 import ProductCount from "../general/ProductCount";
-import useLocalStorageState from "use-local-storage-state";
+import { useStore } from "@/app/context/Store";
+
+import DeleteIcon from "@/assets/svgs/x-circle.svg";
 
 export default function CartItem({ item, checkout }) {
-  const { product: productName, number, price } = item;
+  const { product: productName, quantity, price } = item;
 
   const { image, abbreviation } = cartImages.filter(
     ({ slug }) => slug === productName,
   )[0];
 
-  const [cart, setCart] = useLocalStorageState(`audiophile_cart`);
+  const { incrementCartItem, decrementCartItem, deleteCartItem } = useStore();
 
-  function incrementProductCount() {
-    setCart((prev) =>
-      prev.map((item) =>
-        item.product === productName
-          ? { ...item, [`number`]: number + 1 }
-          : { ...item },
-      ),
-    );
+  function handleAddProduct() {
+    incrementCartItem(productName);
   }
 
-  function decremenProductCount() {
-    if (number === 0) return;
-
-    setCart((prev) =>
-      prev.map((item) =>
-        item.product === productName
-          ? { ...item, [`number`]: number - 1 }
-          : { ...item },
-      ),
-    );
+  function handleSubtractProduct() {
+    if (quantity === 0) return;
+    decrementCartItem(productName);
   }
 
-  function deleteProductFromCart() {
-    setCart((prev) => prev.filter((item) => item.product !== productName));
+  function deleteProduct() {
+    deleteCartItem(productName);
   }
 
   function keepItemInCart() {
-    setCart((prev) =>
-      prev.map((item) =>
-        item.product === productName ? { ...item, [`number`]: 1 } : { ...item },
-      ),
-    );
+    incrementCartItem(productName);
   }
 
   return (
@@ -71,17 +58,17 @@ export default function CartItem({ item, checkout }) {
         </div>
         {checkout ? (
           <p className={`fontPreset7 text-primaryColor text-opacity-70`}>
-            x{number}
+            x{quantity}
           </p>
         ) : (
           <ProductCount
-            count={number}
-            increment={() => incrementProductCount()}
-            decrement={() => decremenProductCount()}
-            className={`rounded-sm px-3 py-2`}
+            count={quantity}
+            increment={() => handleAddProduct()}
+            decrement={() => handleSubtractProduct()}
+            className={`w-[35%] gap-0 rounded-sm px-1 py-2`}
           />
         )}
-        {number === 0 && (
+        {quantity === 0 && (
           <div
             className={`absolute right-0 flex justify-center gap-4 bg-secondaryColor animate-in slide-in-from-right`}
           >
@@ -90,18 +77,18 @@ export default function CartItem({ item, checkout }) {
               onClick={() => {
                 keepItemInCart();
               }}
-              className={`min-w-16 rounded-md bg-green-300 p-2`}
+              className={`min-w-16 rounded-md bg-green-300 p-2 hover:text-secondaryColor`}
             >
               Keep
             </button>
             <button
               aria-label="delete item from cart"
               onClick={() => {
-                deleteProductFromCart();
+                deleteProduct();
               }}
               className={`rounded-md bg-red-300 p-2`}
             >
-              X
+              <DeleteIcon className={`size-7 hover:fill-secondaryColor`} />
             </button>
           </div>
         )}

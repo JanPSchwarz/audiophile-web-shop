@@ -3,11 +3,14 @@
 import Modal from "../general/Modal";
 import TickSVG from "@/assets/svgs/icon-order-confirmation.svg";
 import LinkButton from "../general/LinkButton";
-import CartItem from "../header/CartItem";
+import CartItem from "../cart/CartItem";
 import { useEffect, useState } from "react";
+import { useStore } from "@/app/context/Store";
 
-export default function SuccessMessage({ totalAmount, cart, emptyCart }) {
+export default function SuccessMessage({ totalAmount }) {
   const [showAllItems, setShowAllItems] = useState(false);
+
+  const { cart, emptyCart } = useStore();
 
   useEffect(() => {
     //* empties local storage on dismount
