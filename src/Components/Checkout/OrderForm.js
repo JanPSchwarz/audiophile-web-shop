@@ -39,6 +39,7 @@ export default forwardRef(function OrderForm({ onSubmit }, formRef) {
             condtionallyRequired,
             checked,
             extraSpace,
+            value,
           }) => {
             return (
               <>
@@ -70,6 +71,7 @@ export default forwardRef(function OrderForm({ onSubmit }, formRef) {
                     label={label}
                     type={type}
                     id={id}
+                    value={value}
                     checked={checked}
                     onChange={() => handleIsCash()}
                   />

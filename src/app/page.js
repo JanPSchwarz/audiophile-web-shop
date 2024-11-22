@@ -17,7 +17,7 @@ export default function Home() {
           <CategoryPreviewLinks />
         </section>
         <section
-          className={`flex max-h-[90dvh] flex-col gap-10 overflow-hidden rounded-md bg-accentColor px-10 py-16 lg:flex-row`}
+          className={`flex max-h-[90vh] flex-col gap-10 overflow-hidden rounded-md bg-accentColor px-10 py-16 lg:flex-row`}
         >
           <PrimaryPreview />
         </section>

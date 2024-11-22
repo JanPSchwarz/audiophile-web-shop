@@ -10,6 +10,7 @@ export default function RadioIinput({
   type,
   id,
   onChange,
+  value,
 }) {
   return (
     <>
@@ -24,7 +25,7 @@ export default function RadioIinput({
           defaultChecked={checked}
           id={`radio-${id}`}
           type={type}
-          value={"e-Money"}
+          value={value}
           className={twMerge(
             `placeholder:fontPreset7 min-h-[50px] rounded-md border-2 pl-2`,
             inputClasses,

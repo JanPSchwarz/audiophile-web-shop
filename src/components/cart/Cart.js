@@ -1,25 +1,22 @@
 "use client";
 
-import useLocalStorageState from "use-local-storage-state";
 import Modal from "../general/Modal";
 import CartItem from "./CartItem";
 import LinkButton from "../general/LinkButton";
 import { useState } from "react";
+import { useStore } from "@/app/context/Store";
 
 export default function Cart({ closeCart }) {
-  const [cart, setCart] = useLocalStorageState(`audiophile_cart`);
   const [confirmDeletion, setConfirmDeletion] = useState(false);
 
+  const { cart, emptyCart } = useStore();
+
   const totalAmount = cart.reduce(
-    (memo, { price, number }) => memo + price * number,
+    (memo, { price, quantity }) => memo + price * quantity,
     0,
   );
 
   const cartEmpty = cart.length === 0;
-
-  function emptyCart() {
-    setCart([]);
-  }
 
   function handleShowConfirmMessage() {
     setConfirmDeletion(!confirmDeletion);

@@ -4,13 +4,13 @@ import { useEffect, useState, useCallback } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import useLocalStorageState from "use-local-storage-state";
+import { useStore } from "@/app/context/Store";
 
 import MobileNavigation from "./MobileNavigation";
 import DesktopNavigation from "./DesktopNavigation";
 import useClientWidth from "@/hooks/useClientWidth";
 import BurgerMenu from "./BurgerMenu";
-import Cart from "./Cart";
+import Cart from "../cart/Cart";
 
 import Logo from "@/assets/svgs/logo.svg";
 import CartSVG from "@/assets/svgs/icon-cart.svg";
@@ -19,11 +19,14 @@ export default function Header() {
   const [showMobileNavigation, setShowMobileNavigation] = useState(false);
   const [showCart, setShowCart] = useState(false);
 
+  const { cart } = useStore();
+
   const isMobile = useClientWidth({ operator: "<", number: 1024 });
   const isDesktop = useClientWidth({ operator: ">=", number: 1024 });
 
   const path = usePathname();
 
+  //* closes navigation/cart on every route change
   useEffect(() => {
     if (isMobile) setShowMobileNavigation(false);
 
@@ -34,11 +37,12 @@ export default function Header() {
     setShowMobileNavigation(!showMobileNavigation);
   }
 
-  const [cart] = useLocalStorageState(`audiophile_cart`, { defaultValue: [] });
-
   const getTotalCartCount = useCallback(() => {
     if (cart) {
-      const totalCount = cart.reduce((memo, { number }) => memo + number, 0);
+      const totalCount = cart.reduce(
+        (memo, { quantity }) => memo + quantity,
+        0,
+      );
       return totalCount;
     } else return 0;
   }, [cart]);
@@ -47,6 +51,7 @@ export default function Header() {
 
   const [currentCartCount, setCurrentCartCount] = useState(getTotalCartCount());
 
+  //* to trigger cart animation when item/count is added
   useEffect(() => {
     const newCount = getTotalCartCount();
 

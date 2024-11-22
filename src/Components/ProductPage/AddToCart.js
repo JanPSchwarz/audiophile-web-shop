@@ -3,7 +3,7 @@
 import ProductCount from "../general/ProductCount";
 import LinkButton from "../general/LinkButton";
 import { useReducer } from "react";
-import useLocalStorageState from "use-local-storage-state";
+import { useStore } from "@/app/context/Store";
 
 export default function AddToCart({ product }) {
   const [count, dispatch] = useReducer(reducer, 1);
@@ -22,32 +22,17 @@ export default function AddToCart({ product }) {
     }
   }
 
-  const [cart, setCart] = useLocalStorageState(`audiophile_cart`, {
-    defaultValue: [],
-  });
+  const { cart, createCartItem, updateCartItem } = useStore();
 
   //* creates [{product: "xx59-headphones, number: 1"}, {...}]
   function addProductToCart() {
     if (count === 0) return;
     //* creates new object if not yet existing
     else if (!cart.map((item) => item.product).includes(productSlug)) {
-      setCart((prev) => [
-        ...prev,
-        {
-          [`product`]: productSlug,
-          [`number`]: count,
-          [`price`]: productPrice,
-        },
-      ]);
+      createCartItem(productSlug, count, productPrice);
     } else {
       //* transforms object if existing
-      setCart((prev) =>
-        prev.map((cartItem) =>
-          cartItem.product === productSlug
-            ? { ...cartItem, [`number`]: cartItem.number + count }
-            : { ...cartItem },
-        ),
-      );
+      updateCartItem(productSlug, count);
     }
   }
 
