@@ -114,6 +114,12 @@ button {
     line-height: 1.5rem;
     letter-spacing: 1px;
   }
+  .fontPreset10 {
+    font-size: 0.7rem;
+    font-weight: 600;
+    line-height: 1.5rem;
+    letter-spacing: 1px;
+  }
 
   @keyframes wiggle {
     0% {

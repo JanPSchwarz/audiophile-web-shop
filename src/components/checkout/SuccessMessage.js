@@ -4,13 +4,13 @@ import Modal from "../general/Modal";
 import TickSVG from "@/assets/svgs/icon-order-confirmation.svg";
 import LinkButton from "../general/LinkButton";
 import CartItem from "../cart/CartItem";
-import { useEffect, useState } from "react";
-import { useStore } from "@/app/context/Store";
+import { useEffect, useReducer } from "react";
+import { useStore } from "@/context/Store";
 
-export default function SuccessMessage({ totalAmount }) {
-  const [showAllItems, setShowAllItems] = useState(false);
+export default function SuccessMessage({ totalAmount, handleClose }) {
+  const [showAllItems, setShowAllItems] = useReducer((state) => !state, false);
 
-  const { cart, emptyCart } = useStore();
+  const { cart, emptyCart, stopPropagation } = useStore();
 
   useEffect(() => {
     //* empties local storage on dismount
@@ -19,12 +19,24 @@ export default function SuccessMessage({ totalAmount }) {
     };
   }, []);
 
+  useEffect(() => {
+    function handleKeyEvent(event) {
+      if (event.code === "Escape") {
+        handleClose();
+      }
+    }
+
+    window.addEventListener(`keydown`, handleKeyEvent);
+
+    return () => window.removeEventListener(`keydown`, handleKeyEvent);
+  }, [handleClose]);
+
   return (
     <>
       <Modal className={`animte-in duration-300 zoom-in`}>
         <div
           className={`m-6 grid grid-cols-5 gap-6 md:m-12 md:gap-12`}
-          onClick={(event) => event.stopPropagation()}
+          onClick={stopPropagation}
         >
           <TickSVG />
           <h2
@@ -64,7 +76,7 @@ export default function SuccessMessage({ totalAmount }) {
                 <>
                   <button
                     className={`fontPreset7 font-semibold text-primaryColor text-opacity-60 transition-all`}
-                    onClick={() => setShowAllItems(!showAllItems)}
+                    onClick={setShowAllItems}
                   >
                     {showAllItems
                       ? `show less`

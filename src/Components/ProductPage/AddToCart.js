@@ -3,7 +3,7 @@
 import ProductCount from "../general/ProductCount";
 import LinkButton from "../general/LinkButton";
 import { useReducer } from "react";
-import { useStore } from "@/app/context/Store";
+import { useStore } from "@/context/Store";
 
 export default function AddToCart({ product }) {
   const [count, dispatch] = useReducer(reducer, 1);

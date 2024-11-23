@@ -4,7 +4,7 @@ import cartImages from "@/lib/cartImages";
 
 import ResponsiveStaticImage from "../general/ResponsiveStaticImage";
 import ProductCount from "../general/ProductCount";
-import { useStore } from "@/app/context/Store";
+import { useStore } from "@/context/Store";
 
 import DeleteIcon from "@/assets/svgs/x-circle.svg";
 
@@ -74,18 +74,14 @@ export default function CartItem({ item, checkout }) {
           >
             <button
               aria-label="keep item in cart"
-              onClick={() => {
-                keepItemInCart();
-              }}
+              onClick={keepItemInCart}
               className={`min-w-16 rounded-md bg-green-300 p-2 hover:text-secondaryColor`}
             >
               Keep
             </button>
             <button
               aria-label="delete item from cart"
-              onClick={() => {
-                deleteProduct();
-              }}
+              onClick={deleteProduct}
               className={`rounded-md bg-red-300 p-2`}
             >
               <DeleteIcon className={`size-7 hover:fill-secondaryColor`} />

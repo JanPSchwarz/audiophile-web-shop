@@ -21,13 +21,15 @@ export default function LinkButton({
     return button ? <button {...props}></button> : <Link {...props} />;
   };
 
+  function handleOnClick() {
+    if (clickFunction) clickFunction();
+  }
+
   return (
     <>
       <Tag
         href={!button ? href : undefined}
-        onClick={() => {
-          if (clickFunction) clickFunction();
-        }}
+        onClick={handleOnClick}
         className={twMerge(
           `fontPreset9 p-3 px-6 text-center font-semibold text-secondaryColor hover:text-secondaryColor`,
           primary

@@ -4,7 +4,7 @@ import { useEffect, useState, useCallback } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { useStore } from "@/app/context/Store";
+import { useStore } from "@/context/Store";
 
 import MobileNavigation from "./MobileNavigation";
 import DesktopNavigation from "./DesktopNavigation";
@@ -109,9 +109,7 @@ export default function Header() {
             className={`flex flex-1 justify-center lg:flex-1 lg:-translate-x-6 lg:justify-end`}
           >
             <button
-              onClick={() => {
-                handleShowCart();
-              }}
+              onClick={handleShowCart}
               aria-label="toggle cart"
               className={`p-1 ${animateCart ? `wiggle` : `animate-none`}`}
             >

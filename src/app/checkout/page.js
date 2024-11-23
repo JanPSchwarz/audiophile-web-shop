@@ -1,6 +1,6 @@
 "use client";
 import { useRef, useState } from "react";
-import { useStore } from "../context/Store";
+import { useStore } from "@/context/Store";
 
 import OrderForm from "@/components/checkout/OrderForm";
 import Summary from "@/components/checkout/Summary";
@@ -9,7 +9,7 @@ import SuccessMessage from "@/components/checkout/SuccessMessage";
 
 export default function Checkout() {
   const { cart } = useStore();
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
   const totalAmount = cart.reduce(
     (memo, { price, quantity }) => memo + price * quantity,
@@ -36,14 +36,18 @@ export default function Checkout() {
       console.table(data);
 
       //* triggers success message
-      setIsSubmitted(true);
+      setShowSuccessMessage(true);
     }
+  }
+
+  function handleClose() {
+    setShowSuccessMessage(!showSuccessMessage);
   }
 
   return (
     <>
       <div>
-        <div className={`my-4 flex flex-col gap-4`}>
+        <div className={`my-4 flex flex-col justify-center gap-4`}>
           <GoBack href={"/"} />
           <h1 className={`fontPreset5 text-primaryColor`}>CHECKOUT</h1>
         </div>
@@ -57,7 +61,9 @@ export default function Checkout() {
             cart={cart}
           />
         </div>
-        {isSubmitted && <SuccessMessage totalAmount={totalAmount} />}
+        {showSuccessMessage && (
+          <SuccessMessage totalAmount={totalAmount} handleClose={handleClose} />
+        )}
       </div>
     </>
   );
