@@ -65,6 +65,10 @@ export const StorageProvider = ({ children }) => {
     setCart([]);
   }
 
+  function stopPropagation(event) {
+    event.stopPropagation();
+  }
+
   const store = {
     cart,
     incrementCartItem,
@@ -73,6 +77,7 @@ export const StorageProvider = ({ children }) => {
     createCartItem,
     updateCartItem,
     emptyCart,
+    stopPropagation,
   };
 
   return <Store.Provider value={store}>{children}</Store.Provider>;

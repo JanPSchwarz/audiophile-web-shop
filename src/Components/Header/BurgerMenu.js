@@ -5,7 +5,7 @@ export default function BurgerMenu({ isOpen, handleClick }) {
     <>
       <button
         aria-label="toggle navigation menu"
-        onClick={() => handleClick()}
+        onClick={handleClick}
         className={`flex flex-col items-center justify-center p-2`}
       >
         <span

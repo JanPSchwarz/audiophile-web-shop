@@ -4,12 +4,12 @@ import Modal from "../general/Modal";
 import CartItem from "./CartItem";
 import LinkButton from "../general/LinkButton";
 import { useState } from "react";
-import { useStore } from "@/app/context/Store";
+import { useStore } from "@/context/Store";
 
 export default function Cart({ closeCart }) {
   const [confirmDeletion, setConfirmDeletion] = useState(false);
 
-  const { cart, emptyCart } = useStore();
+  const { cart, emptyCart, stopPropagation } = useStore();
 
   const totalAmount = cart.reduce(
     (memo, { price, quantity }) => memo + price * quantity,
@@ -29,14 +29,14 @@ export default function Cart({ closeCart }) {
         closeModal={closeCart}
       >
         <div
-          onClick={(event) => event.stopPropagation()}
+          onClick={stopPropagation}
           className={`relative flex max-h-[100dvh] min-w-[350px] flex-col gap-12 overflow-y-scroll rounded-md bg-secondaryColor p-8 pb-12 md:absolute md:right-0 md:top-[90px]`}
         >
           <div className={`flex w-full justify-between`}>
             <h2 className={`fontPreset6`}>CART({cart.length})</h2>
             {!cartEmpty && (
               <button
-                onClick={() => handleShowConfirmMessage()}
+                onClick={handleShowConfirmMessage}
                 className={`fontPreset7 text-primaryColor text-opacity-70 underline`}
               >
                 Remove all
@@ -101,7 +101,7 @@ export default function Cart({ closeCart }) {
             </div>
           )}
           <button
-            onClick={() => closeCart()}
+            onClick={closeCart}
             aria-label="close cart modal"
             className={`fontPreset7 absolute bottom-0 right-4 p-2 text-primaryColor text-opacity-60 underline`}
           >

@@ -5,7 +5,7 @@ import Header from "@/components/header/Header";
 import Footer from "@/components/footer/Footer";
 import About from "@/components/general/About";
 import { twMerge } from "tailwind-merge";
-import { StorageProvider } from "./context/Store";
+import { StorageProvider } from "@/context/Store";
 
 const manrope = Manrope({
   subsets: ["latin"],

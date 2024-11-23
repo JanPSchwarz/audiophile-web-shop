@@ -10,6 +10,16 @@ export default function Modal({ children, closeModal, className }) {
     if (dialogRef) dialogRef.current.showModal();
   }, []);
 
+  function handleClose() {
+    if (closeModal) closeModal();
+  }
+
+  function handleKeyEvent(event) {
+    if (event.code === "Escape" && dialogRef.current) {
+      dialogRef.current.close();
+    }
+  }
+
   return (
     <dialog
       className={twMerge(
@@ -17,9 +27,8 @@ export default function Modal({ children, closeModal, className }) {
         className,
       )}
       ref={dialogRef}
-      onClick={() => {
-        if (closeModal) closeModal();
-      }}
+      onClick={handleClose}
+      onKeyDown={handleKeyEvent}
     >
       {children}
     </dialog>

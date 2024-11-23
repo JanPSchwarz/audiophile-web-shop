@@ -5,6 +5,7 @@ import { useState, forwardRef } from "react";
 
 import TextInput from "./TextInput";
 import RadioIinput from "./RadioInput";
+import CashSVG from "@/assets/svgs/icon-cash-on-delivery.svg";
 
 export default forwardRef(function OrderForm({ onSubmit }, formRef) {
   const [isCash, setIsCash] = useState(false);
@@ -36,10 +37,12 @@ export default forwardRef(function OrderForm({ onSubmit }, formRef) {
             id,
             placeholder,
             alwaysRequired,
-            condtionallyRequired,
             checked,
             extraSpace,
             value,
+            validationPattern,
+            invalidText,
+            conditionalRender,
           }) => {
             return (
               <>
@@ -58,9 +61,10 @@ export default forwardRef(function OrderForm({ onSubmit }, formRef) {
                     label={label}
                     type={type}
                     placeholder={placeholder}
-                    required={
-                      alwaysRequired || (condtionallyRequired && !isCash)
-                    }
+                    required={alwaysRequired || !isCash}
+                    pattern={validationPattern}
+                    invalidText={invalidText}
+                    hide={conditionalRender && isCash}
                     wrapperClasses={extraSpace && `md:col-span-2`}
                   />
                 )}
@@ -79,6 +83,23 @@ export default forwardRef(function OrderForm({ onSubmit }, formRef) {
               </>
             );
           },
+        )}
+        {isCash && (
+          <>
+            <div
+              className={`m-2 flex items-start justify-center gap-4 md:col-span-full md:m-8 md:items-center`}
+            >
+              <CashSVG className={`min-w-12`} />
+              <p
+                className={`fontPreset7 text-balance text-primaryColor text-opacity-60 md:text-center lg:text-pretty`}
+              >
+                The ‘Cash on Delivery’ option enables you to pay in cash when
+                our delivery courier arrives at your residence. Just make sure
+                your address is correct so that your order will not be
+                cancelled.
+              </p>
+            </div>
+          </>
         )}
       </form>
     </>
