@@ -3,7 +3,7 @@
 import Modal from "../general/Modal";
 import CartItem from "./CartItem";
 import LinkButton from "../general/LinkButton";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useStore } from "@/context/Store";
 
 export default function Cart({ closeCart }) {
@@ -15,6 +15,18 @@ export default function Cart({ closeCart }) {
     (memo, { price, quantity }) => memo + price * quantity,
     0,
   );
+
+  useEffect(() => {
+    function handleKeyEvent(event) {
+      if (event.code === "Escape") {
+        closeCart();
+      }
+    }
+
+    window.addEventListener(`keydown`, handleKeyEvent);
+
+    return () => window.removeEventListener(`keydown`, handleKeyEvent);
+  }, [closeCart]);
 
   const cartEmpty = cart.length === 0;
 
