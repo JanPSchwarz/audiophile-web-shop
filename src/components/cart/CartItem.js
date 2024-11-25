@@ -7,6 +7,7 @@ import ProductCount from "../general/ProductCount";
 import { useStore } from "@/context/Store";
 
 import DeleteIcon from "@/assets/svgs/x-circle.svg";
+import { useMemo } from "react";
 
 export default function CartItem({ item, checkout }) {
   const { product: productName, quantity, price } = item;
@@ -34,16 +35,24 @@ export default function CartItem({ item, checkout }) {
     incrementCartItem(productName);
   }
 
+  //* prevents flickering of image on re-render when quantity changes caused by ProductCount
+  const memoizedImage = useMemo(
+    () => (
+      <ResponsiveStaticImage
+        alt={productName}
+        defaultSrc={image}
+        className={`max-w-16 rounded-md`}
+      />
+    ),
+    [image, productName],
+  );
+
   return (
     <>
       <div
         className={`relative flex w-full items-center justify-between gap-2 overflow-x-hidden`}
       >
-        <ResponsiveStaticImage
-          alt={productName}
-          defaultSrc={image}
-          className={`max-w-16 rounded-md`}
-        />
+        {memoizedImage}
         <div className={`flex flex-1 flex-col`}>
           <p
             className={`fontPreset7 text-nowrap text-left font-semibold text-primaryColor`}
@@ -63,8 +72,8 @@ export default function CartItem({ item, checkout }) {
         ) : (
           <ProductCount
             count={quantity}
-            increment={() => handleAddProduct()}
-            decrement={() => handleSubtractProduct()}
+            increment={handleAddProduct}
+            decrement={handleSubtractProduct}
             className={`w-[35%] gap-0 rounded-sm px-1 py-2`}
           />
         )}

@@ -83,7 +83,7 @@ export default function ResponsiveStaticImage({
   //* creates Image component that excepts motion-framer animation values
   const MotionImage = motion.create(
     forwardRef(function MotionImage(props, ref) {
-      return <Image ref={ref} {...props} />;
+      return <Image ref={ref} alt={alt} {...props} />;
     }),
   );
 
