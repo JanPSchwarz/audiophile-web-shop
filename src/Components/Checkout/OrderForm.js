@@ -61,7 +61,7 @@ export default forwardRef(function OrderForm({ onSubmit }, formRef) {
                     label={label}
                     type={type}
                     placeholder={placeholder}
-                    required={alwaysRequired || !isCash}
+                    required={type !== "tel" && (alwaysRequired || !isCash)}
                     pattern={validationPattern}
                     invalidText={invalidText}
                     hide={conditionalRender && isCash}
