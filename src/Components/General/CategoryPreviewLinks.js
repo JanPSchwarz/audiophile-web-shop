@@ -1,5 +1,3 @@
-"use client";
-
 import Link from "next/link";
 import Image from "next/image";
 
@@ -19,7 +17,7 @@ export default function CategoryPreviewLinks() {
     <>
       {linkList.map(({ product, image }, i) => {
         return (
-          <Link key={i} className={`w-full`} href={`/${product}`}>
+          <Link key={i} className={`mb-8 w-full`} href={`/${product}`}>
             <div
               className={`relative flex h-[18vh] max-h-[160px] w-full flex-col items-center justify-end rounded-md bg-lightColor landscape:h-[18vw]`}
             >

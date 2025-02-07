@@ -1,21 +1,19 @@
 import ResponsiveStaticImage from "../general/ResponsiveStaticImage";
 import LinkButton from "../general/LinkButton";
 
-export default function CategoryProductCard({ data, reverse, category }) {
+export default function CategoryProductCard({ product, reverse, category }) {
   const {
     id,
-    categoryImage = {},
+    categoryImage,
     description = "missing data",
     name = "missing data",
     slug,
     new: isNew = false,
-  } = data;
+  } = product;
 
-  const {
-    mobile: mobileImage,
-    tablet: tabletImage,
-    desktop: defaultSrc,
-  } = categoryImage;
+  const mobileImage = categoryImage[0]?.mobile[0];
+  const tabletImage = categoryImage[1]?.tablet[0];
+  const defaultSrc = categoryImage[2]?.desktop[0];
 
   return (
     <>

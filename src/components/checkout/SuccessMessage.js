@@ -10,14 +10,16 @@ import { useStore } from "@/context/Store";
 export default function SuccessMessage({ totalAmount, handleClose }) {
   const [showAllItems, setShowAllItems] = useReducer((state) => !state, false);
 
+  console.log(totalAmount);
+
   const { cart, emptyCart, stopPropagation } = useStore();
 
-  useEffect(() => {
-    //* empties local storage on dismount
-    return () => {
-      emptyCart();
-    };
-  }, []);
+  // useEffect(() => {
+  //   //* empties local storage on dismount
+  //   return () => {
+  //     emptyCart();
+  //   };
+  // }, []);
 
   useEffect(() => {
     function handleKeyEvent(event) {

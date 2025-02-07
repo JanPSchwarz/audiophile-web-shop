@@ -1,17 +1,10 @@
-import data from "@/lib/data";
+import CategoryProducts from "@/components/categoryPage/CategoryProducts";
+import CategorySkeleton from "@/components/categoryPage/LoadingCategory";
 
-import PreviewProductCard from "@/components/categoryPage/PreviewProductCard";
+import { Suspense } from "react";
 
 export default async function Category({ params }) {
   const { category } = await params;
-
-  // sorts after 'new'-key (truthy first) and 'price'-key (highest first)
-  const products = data
-    .filter((product) => product.category === category)
-    .sort((a, b) => b.new - a.new)
-    .sort((a, b) => b.price - a.price);
-
-  if (products.length == 0) throw new Error("Loading data not possible.");
 
   return (
     <>
@@ -23,18 +16,11 @@ export default async function Category({ params }) {
         </h2>
       </div>
       <div className={`my-16 mt-28 flex flex-col gap-20 md:mt-48`}>
-        {products.map((product, index) => {
-          const even = (index + 1) % 2 == 0;
-          return (
-            <PreviewProductCard
-              category={category}
-              key={product.id}
-              data={product}
-              reverse={even}
-            />
-          );
-        })}
+        <Suspense fallback={<CategorySkeleton />}>
+          <CategoryProducts category={category} />
+        </Suspense>
       </div>
+      
     </>
   );
 }

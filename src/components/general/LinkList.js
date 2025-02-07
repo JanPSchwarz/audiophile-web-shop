@@ -1,17 +1,10 @@
 import Link from "next/link";
 import { twMerge } from "tailwind-merge";
 
-export default function LinkList({ className }) {
-  const linkList = [
-    { name: "home", href: "/" },
-    { name: "headphones", href: "/headphones" },
-    { name: "speakers", href: "/speakers" },
-    { name: "earphones", href: "/earphones" },
-  ];
-
+export default function LinkList({ className, links }) {
   return (
     <>
-      {linkList.map(({ name, href }, i) => {
+      {links?.map(({ name, href }, i) => {
         return (
           <Link
             key={i}

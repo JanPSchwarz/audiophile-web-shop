@@ -11,6 +11,8 @@ export default function Cart({ closeCart }) {
 
   const { cart, emptyCart, stopPropagation } = useStore();
 
+  console.log(cart);
+
   const totalAmount = cart.reduce(
     (memo, { price, quantity }) => memo + price * quantity,
     0,

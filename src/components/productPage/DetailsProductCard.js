@@ -7,7 +7,7 @@ import AddToCart from "./AddToCart";
 export default function DetailsProductCard({ product, category }) {
   const {
     new: isNew,
-    image: { mobile: mobileSrc, tablet: tabletSrc, desktop: defaultSrc } = {},
+    image,
     name = "missing data",
     description = "missing data",
     price,
@@ -17,6 +17,10 @@ export default function DetailsProductCard({ product, category }) {
     others,
     slug,
   } = product;
+
+  const mobileSrc = image[0]?.mobile[0];
+  const tabletSrc = image[1]?.tablet[0];
+  const defaultSrc = image[2]?.desktop[0];
 
   return (
     <>
