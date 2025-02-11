@@ -2,10 +2,15 @@
 
 import LinkList from "../general/LinkList";
 import { motion } from "framer-motion";
-import getNavigation from "@/lib/client-side-fetching/fetchNavigation";
+// import getNavigation from "@/lib/client-side-fetching/fetchNavigation";
+import useSWR from "swr";
+
+const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
 export default function DesktopNavigation({ isVisible }) {
-  const { navigation: links, isLoading } = getNavigation();
+  const { data, error, isLoading } = useSWR(`/api/navigation`, fetcher);
+
+  const links = data?.navigation_links;
 
   return (
     <>

@@ -1,23 +1,18 @@
-import EarphoneImage from "@/assets/images/home/tablet/image-earphones-yx1.jpg";
-import ResponsiveStaticImage from "../general/ResponsiveStaticImage";
+import StorybokImage from "../general/StorybokImage";
 import LinkButton from "../general/LinkButton";
 
 export default function TertiaryPreview({ content }) {
   const { href, image, heading, btn_text } = content;
 
-  const defaultSrc = image[0];
+  const defaultSrc = image[0].image;
   return (
     <>
       <div className={`flex flex-col gap-4 md:flex-row`}>
-        <div
-          className={`relative aspect-[1.69] w-full md:aspect-[1.05] md:flex-1 lg:aspect-[1.69]`}
-        >
-          <ResponsiveStaticImage
+        <div className={`relative w-full md:flex-1`}>
+          <StorybokImage
             defaultSrc={defaultSrc}
             sizes="50vw"
-            alt={"YX1 Earphones"}
-            fill
-            className={`rounded-md object-cover`}
+            className={`w-full rounded-md object-fill`}
             animations={{
               initial: { opacity: 0 },
               animate: { opacity: 1 },

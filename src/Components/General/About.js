@@ -1,4 +1,4 @@
-import ResponsiveStaticImage from "./ResponsiveStaticImage";
+import StorybokImage from "./StorybokImage";
 import getAbout from "@/lib/server-side-fetching/fetchAboutContent";
 
 import { StoryblokRichText } from "@storyblok/react";
@@ -10,29 +10,26 @@ export default async function About() {
 
   const text = data.text;
 
-  const defaultImageSrc = data.image[0];
+  const defaultImageSrc = data.image[1].image;
+  const tabletSrc = data.image[2].image;
 
   return (
     <>
       <section
         className={`my-32 flex flex-col items-center justify-center gap-10 lg:flex-row-reverse`}
       >
-        <div
-          className={`relative aspect-[1.09] w-full md:aspect-[2.29] lg:aspect-[1.09] lg:flex-1`}
-        >
-          <ResponsiveStaticImage
-            alt={"model wearing audiophile headphones"}
-            defaultSrc={defaultImageSrc}
-            sizes="(min-width: 1024px) 50vw, 100vw"
-            className={`rounded-md object-cover`}
-            fill
-            animations={{
-              initial: { opacity: 0 },
-              animate: { opacity: 1 },
-              transition: { duration: 1 },
-            }}
-          />
-        </div>
+        <StorybokImage
+          defaultSrc={defaultImageSrc}
+          tabletSrc={tabletSrc}
+          sizes="(min-width: 1024px) 50vw, 100vw"
+          className={`flex-1 rounded-md object-fill`}
+          // fill
+          animations={{
+            initial: { opacity: 0 },
+            animate: { opacity: 1 },
+            transition: { duration: 1 },
+          }}
+        />
         <div
           className={`flex flex-col items-center justify-center gap-10 text-center md:w-4/5 lg:flex-1 lg:text-left`}
         >

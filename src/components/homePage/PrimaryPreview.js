@@ -1,7 +1,6 @@
-import ResponsiveStaticImage from "../general/ResponsiveStaticImage";
 import LinkButton from "../general/LinkButton";
-import SpeakersImageDesktop from "@/assets/images/home/mobile/image-speaker-zx9.png";
 import Circles from "@/assets/svgs/pattern-circles.svg";
+import StorybokImage from "../general/StorybokImage";
 
 export default function PrimaryPreview({ content }) {
   const { text, href, image, heading, btn_text } = content;
@@ -9,16 +8,14 @@ export default function PrimaryPreview({ content }) {
   const firstPartHeading = heading.split(" ")[0];
   const secondPartHeading = heading.split(" ")[1];
 
-  const desktopSrc = image[0];
+  const desktopSrc = image[0].image;
 
   return (
     <>
       <div
         className={`relative flex items-center justify-center lg:flex-1 lg:translate-y-12 lg:items-end`}
       >
-        <ResponsiveStaticImage
-          alt={heading}
-          sizes="100vw"
+        <StorybokImage
           defaultSrc={desktopSrc}
           className={`z-20 w-[clamp(10rem,_50vw,_24rem)] landscape:w-[clamp(10rem,_70vh,_48rem)]`}
           animations={{

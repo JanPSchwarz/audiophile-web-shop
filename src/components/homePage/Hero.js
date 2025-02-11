@@ -1,28 +1,25 @@
 import LinkButton from "../general/LinkButton";
-import ResponsiveStaticImage from "../general/ResponsiveStaticImage";
-import Picture from "@/assets/images/home/desktop/image-hero.jpg";
+import StorybokImage from "../general/StorybokImage";
 
 export default function Hero({ content }) {
   const { heading, btn_text, superscript, text, href, image } = content;
 
-  const mobileSrc = image[0].mobile[0];
-  const tabletSrc = image[1].tablet[0];
-  const desktopSrc = image[2].desktop[0];
+  const mobileSrc = image[0].mobile[0].image;
+  const tabletSrc = image[1].tablet[0].image;
+  const desktopSrc = image[2].desktop[0].image;
 
   return (
     <>
       <div
         className={`relative flex items-center justify-center before:absolute before:top-0 before:z-10 before:h-[1px] before:w-screen before:bg-secondaryColor before:bg-opacity-20 before:content-[""] md:before:w-full lg:justify-start`}
       >
-        <ResponsiveStaticImage
-          alt={heading}
+        <StorybokImage
           defaultSrc={desktopSrc}
           tabletSrc={tabletSrc}
           mobileSrc={mobileSrc}
-          sizes="100vw"
-          placeholder={true}
-          placeholderClasses={`w-full`}
-          className={`translate-y-[7%] scale-[1.15] object-cover object-bottom brightness-75`}
+          className={`translate-y-[7%] scale-[1.15] bg-black object-cover object-bottom brightness-75`}
+          priority={true}
+          sizes={"100vw"}
           animations={{
             initial: { filter: "blur(5px)", opacity: 0 },
             animate: { filter: "blur(0)", opacity: 1 },

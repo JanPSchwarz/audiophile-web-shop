@@ -8,7 +8,7 @@ import { useStore } from "@/context/Store";
 
 import MobileNavigation from "./MobileNavigation";
 import DesktopNavigation from "./DesktopNavigation";
-import useClientWidth from "@/hooks/useClientWidth";
+import useBreakpoints from "@/hooks/useBreakpoints";
 import BurgerMenu from "./BurgerMenu";
 import Cart from "../cart/Cart";
 
@@ -21,17 +21,16 @@ export default function Header() {
 
   const { cart } = useStore();
 
-  const isMobile = useClientWidth({ operator: "<", number: 1024 });
-  const isDesktop = useClientWidth({ operator: ">=", number: 1024 });
+  const { isDesktop } = useBreakpoints();
 
   const path = usePathname();
 
   //* closes navigation/cart on every route change
   useEffect(() => {
-    if (isMobile) setShowMobileNavigation(false);
+    if (!isDesktop) setShowMobileNavigation(false);
 
     setShowCart(false);
-  }, [path]);
+  }, [path, isDesktop]);
 
   function handleShowMobileNavigation() {
     setShowMobileNavigation(!showMobileNavigation);
@@ -85,7 +84,7 @@ export default function Header() {
             animate={{ opacity: 1 }}
             className={`flex flex-1 justify-center md:scale-125 lg:flex-none`}
           >
-            {isMobile && (
+            {!isDesktop && (
               <BurgerMenu
                 isOpen={showMobileNavigation}
                 handleClick={handleShowMobileNavigation}

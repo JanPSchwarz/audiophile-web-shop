@@ -5,14 +5,12 @@ import getProducts from "@/lib/server-side-fetching/fetchProducts";
 export default async function DetailPage({ params }) {
   const { product: productParam, category: categoryParam } = await params;
 
-  const test = await getProducts();
+  const products = await getProducts();
 
-  const productData = test.filter(
+  const productData = products.filter(
     (product) =>
       product.slug === productParam && product.category === categoryParam,
   );
-
-  if (productData.length == 0) notFound();
 
   return (
     <>

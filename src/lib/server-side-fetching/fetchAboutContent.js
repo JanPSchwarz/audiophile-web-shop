@@ -3,7 +3,7 @@ export default async function getAbout() {
 
   const url = `https://api.storyblok.com/v2/cdn/stories/about?version=draft&token=${token}&cv=1738919397`;
 
-  const response = await fetch(url, { next: { revalidate: 1800 } });
+  const response = await fetch(url, { next: { revalidate: 300 } });
 
   if (!response.ok) {
     throw new Error("Error fetching data");

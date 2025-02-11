@@ -1,8 +1,8 @@
-import ResponsiveStaticImage from "../general/ResponsiveStaticImage";
 import ProductGallery from "./ProductGallery";
 import ProductsPreview from "./ProductsPreview";
 import GoBack from "../general/GoBack";
 import AddToCart from "./AddToCart";
+import StorybokImage from "../general/StorybokImage";
 
 export default function DetailsProductCard({ product, category }) {
   const {
@@ -18,9 +18,9 @@ export default function DetailsProductCard({ product, category }) {
     slug,
   } = product;
 
-  const mobileSrc = image[0]?.mobile[0];
-  const tabletSrc = image[1]?.tablet[0];
-  const defaultSrc = image[2]?.desktop[0];
+  const mobileSrc = image[0]?.mobile[0].image;
+  const tabletSrc = image[1]?.tablet[0].image;
+  const defaultSrc = image[2]?.desktop[0].image;
 
   return (
     <>
@@ -30,20 +30,12 @@ export default function DetailsProductCard({ product, category }) {
       <div className={`flex flex-col gap-16`}>
         <div className={`flex flex-col gap-6 md:flex-row lg:gap-20`}>
           <div className={`md:flex md:flex-1`}>
-            {defaultSrc ? (
-              <ResponsiveStaticImage
-                alt={name}
-                defaultSrc={defaultSrc}
-                mobileSrc={mobileSrc}
-                tabletSrc={tabletSrc}
-                placeholder
-                className={`rounded-md`}
-              />
-            ) : (
-              <p className={`mx-auto my-36 w-full text-center md:my-auto`}>
-                Missing image...
-              </p>
-            )}
+            <StorybokImage
+              defaultSrc={defaultSrc}
+              mobileSrc={mobileSrc}
+              tabletSrc={tabletSrc}
+              className={`rounded-md`}
+            />
           </div>
           <div
             className={`flex flex-col gap-4 md:flex-1 md:justify-evenly md:gap-0`}
