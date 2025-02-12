@@ -1,5 +1,8 @@
 export default async function getLandingPageContent() {
-  const token = process.env.STORYBLOK_API_KEY;
+  const token =
+    process.env.NODE_ENV === "production"
+      ? process.env.STORYBLOK_PUBLIC_API_KEY
+      : process.env.STORYBLOK_PREVIEW_API_KEY;
 
   const version = process.env.NODE_ENV === "production" ? "published" : "draft";
 
@@ -8,7 +11,7 @@ export default async function getLandingPageContent() {
   const response = await fetch(url, { next: { revalidate: 300 } });
 
   if (!response.ok) {
-    throw new Error("Error fetching data");
+    throw new Error(`Error fetching data: ${response.statusText}`);
   }
 
   const data = await response.json();

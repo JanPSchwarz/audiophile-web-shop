@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-export default function useBreakpoints() {
+export default function useBreakpoints({ disable = false } = {}) {
   const [breakpoints, setBreakpoints] = useState({
     isMobile: false,
     isTablet: false,
@@ -26,6 +26,9 @@ export default function useBreakpoints() {
 
     updateBreakpoints();
 
+    // further computations through event listeners can be disabled to save memory
+    if (disable) return;
+
     // Add event listeners
     mobileMediaQuery.addEventListener("change", updateBreakpoints);
     tabletMediaQuery.addEventListener("change", updateBreakpoints);
@@ -37,7 +40,7 @@ export default function useBreakpoints() {
       tabletMediaQuery.removeEventListener("change", updateBreakpoints);
       desktopMediaQuery.removeEventListener("change", updateBreakpoints);
     };
-  }, []);
+  }, [disable]);
 
   return breakpoints;
 }

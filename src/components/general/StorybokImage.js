@@ -19,7 +19,7 @@ export default function StorybokImage({
 }) {
   const singleSource = !mobileSrc && !tabletSrc;
 
-  const { isMobile, isTablet } = !singleSource && useBreakpoints();
+  const { isMobile, isTablet } = useBreakpoints({ disable: singleSource });
 
   const { alt } = defaultSrc;
 
