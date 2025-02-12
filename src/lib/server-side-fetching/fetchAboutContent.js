@@ -1,7 +1,9 @@
 export default async function getAbout() {
   const token = process.env.STORYBLOK_API_KEY;
 
-  const url = `https://api.storyblok.com/v2/cdn/stories/about?version=draft&token=${token}&cv=1738919397`;
+  const version = process.env.NODE_ENV === "production" ? "published" : "draft";
+
+  const url = `https://api.storyblok.com/v2/cdn/stories/about?version=${version}&token=${token}&cv=1738919397`;
 
   const response = await fetch(url, { next: { revalidate: 300 } });
 
