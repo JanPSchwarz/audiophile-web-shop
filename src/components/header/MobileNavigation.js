@@ -17,7 +17,7 @@ export default function MobileNavigation({ closeNavigation, isVisible }) {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
             onClick={closeNavigation}
-            className={`fixed z-30 h-[calc(100dvh-90px)] w-full bg-gray-500 bg-opacity-30`}
+            className={`fixed z-20 h-[calc(100dvh-90px)] w-full bg-gray-500 bg-opacity-30`}
           >
             <motion.div
               initial={{ y: "-100%" }}

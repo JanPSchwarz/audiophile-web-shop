@@ -16,7 +16,7 @@ export default function CategoryPreviewLinks() {
     <>
       {linkList.map(({ category, image }, i) => {
         return (
-          <Link key={i} className={`mb-8 w-full`} href={`/${category}`}>
+          <Link key={i} className={` w-full`} href={`/${category}`}>
             <div
               className={`relative flex h-[18vh] max-h-[160px] w-full flex-col items-center justify-end rounded-md bg-lightColor landscape:h-[18vw]`}
             >
