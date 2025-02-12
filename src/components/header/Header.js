@@ -21,7 +21,7 @@ export default function Header() {
 
   const { cart } = useStore();
 
-  const { isDesktop } = useBreakpoints();
+  const { isMobile, isDesktop, isTablet } = useBreakpoints();
 
   const path = usePathname();
 
@@ -120,7 +120,7 @@ export default function Header() {
         </div>
       </header>
       <MobileNavigation
-        isVisible={showMobileNavigation && isMobile}
+        isVisible={showMobileNavigation && (isMobile || isTablet)}
         closeNavigation={handleShowMobileNavigation}
       />
       {showCart && <Cart closeCart={handleShowCart} />}

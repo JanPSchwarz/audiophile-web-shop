@@ -1,7 +1,7 @@
-export default async function getTestImages() {
+export async function GET() {
   const token = process.env.STORYBLOK_API_KEY;
 
-  const url = `https://api.storyblok.com/v2/cdn/stories/testimages?version=draft&token=${token}&cv=1739179171`;
+  const url = `https://api.storyblok.com/v2/cdn/stories/category-links?version=draft&token=${token}&cv=1739350408`;
 
   const response = await fetch(url, { next: { revalidate: 300 } });
 
@@ -11,5 +11,5 @@ export default async function getTestImages() {
 
   const content = data.story.content;
 
-  return content;
+  return Response.json(content);
 }

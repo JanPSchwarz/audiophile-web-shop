@@ -22,6 +22,13 @@ export default function DetailsProductCard({ product, category }) {
   const tabletSrc = image[1]?.tablet[0].image;
   const defaultSrc = image[2]?.desktop[0].image;
 
+  const formattedFeaturesText = features.split("\\n").map((item, index) => (
+    <span key={index}>
+      {item}
+      <br />
+    </span>
+  ));
+
   return (
     <>
       <div className={`my-4 md:my-8 lg:my-12`}>
@@ -70,7 +77,7 @@ export default function DetailsProductCard({ product, category }) {
             <p
               className={`fontPreset7 whitespace-pre-line text-primaryColor text-opacity-70 lg:text-balance`}
             >
-              {features}
+              {formattedFeaturesText}
             </p>
           </div>
           <div
