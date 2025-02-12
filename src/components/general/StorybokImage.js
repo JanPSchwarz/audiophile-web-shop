@@ -4,7 +4,7 @@ import useBreakpoints from "@/hooks/useBreakpoints";
 import Image from "next/image";
 import { twMerge } from "tailwind-merge";
 import { motion } from "framer-motion";
-import { forwardRef } from "react";
+import { forwardRef, useEffect } from "react";
 
 export default function StorybokImage({
   defaultSrc,
@@ -20,6 +20,11 @@ export default function StorybokImage({
   const singleSource = !mobileSrc && !tabletSrc;
 
   const { isMobile, isTablet } = useBreakpoints({ disable: singleSource });
+
+  useEffect(() => {
+    if (!isMobile) console.log(defaultSource);
+    if (isTablet) console.log("istablet");
+  }, [isMobile, isTablet]);
 
   const { alt } = defaultSrc;
 

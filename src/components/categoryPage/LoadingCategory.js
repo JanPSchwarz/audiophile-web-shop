@@ -4,7 +4,7 @@ import "react-loading-skeleton/dist/skeleton.css";
 export default function CategorySkeleton() {
   return (
     <>
-      <div className={`flex flex-col gap-12 lg:flex-row`}>
+      <div className={`flex flex-col gap-12 fade-out lg:flex-row`}>
         <Skeleton
           containerClassName={`flex-1`}
           height={"24rem"}
