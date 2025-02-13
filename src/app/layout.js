@@ -1,5 +1,4 @@
 import "./globals.css";
-import StyledJsxRegistry from "@/registries/styledJSXRegistry";
 import { Manrope } from "next/font/google";
 import Header from "@/components/header/Header";
 import Footer from "@/components/footer/Footer";
