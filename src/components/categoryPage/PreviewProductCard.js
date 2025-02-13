@@ -25,6 +25,7 @@ export default function CategoryProductCard({ product, reverse, category }) {
             defaultSrc={defaultSrc}
             tabletSrc={tabletImage}
             mobileSrc={mobileImage}
+            placeholder
             className={`rounded-md`}
           />
         </div>

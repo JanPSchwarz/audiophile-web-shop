@@ -41,6 +41,7 @@ export default function DetailsProductCard({ product, category }) {
               defaultSrc={defaultSrc}
               mobileSrc={mobileSrc}
               tabletSrc={tabletSrc}
+              priority
               placeholder
               className={`rounded-md`}
             />
