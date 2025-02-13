@@ -1,5 +1,5 @@
 import LinkButton from "../general/LinkButton";
-import StorybokImage from "../general/StorybokImage";
+import StorybokImage from "../general/StoryblokImage";
 
 export default function SecondaryPreview({ content }) {
   const { href, image, heading, btn_text } = content;
@@ -15,6 +15,7 @@ export default function SecondaryPreview({ content }) {
           defaultSrc={desktopSrc}
           tabletSrc={tabletSrc}
           mobileSrc={mobileSrc}
+          placeholder
           sizes="100vw"
           className={`w-full rounded-md`}
           animations={{

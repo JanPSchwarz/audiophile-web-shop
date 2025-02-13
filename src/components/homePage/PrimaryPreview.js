@@ -1,6 +1,6 @@
 import LinkButton from "../general/LinkButton";
 import Circles from "@/assets/svgs/pattern-circles.svg";
-import StorybokImage from "../general/StorybokImage";
+import StorybokImage from "../general/StoryblokImage";
 
 export default function PrimaryPreview({ content }) {
   const { text, href, image, heading, btn_text } = content;
@@ -17,6 +17,7 @@ export default function PrimaryPreview({ content }) {
       >
         <StorybokImage
           defaultSrc={desktopSrc}
+          placeholder
           className={`z-20 w-[clamp(10rem,_50vw,_24rem)] landscape:w-[clamp(10rem,_70vh,_48rem)]`}
           animations={{
             initial: { opacity: 0 },

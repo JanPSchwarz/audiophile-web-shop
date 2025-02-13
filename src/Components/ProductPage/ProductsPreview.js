@@ -1,5 +1,5 @@
 import LinkButton from "../general/LinkButton";
-import StorybokImage from "../general/StorybokImage";
+import StorybokImage from "../general/StoryblokImage";
 
 export default function ProductsPreview({ products }) {
   return (
@@ -23,6 +23,7 @@ export default function ProductsPreview({ products }) {
               defaultSrc={defaultSrc}
               tabletSrc={tabletSrc}
               mobileSrc={mobileSrc}
+              placeholer
               className={`rounded-md`}
             />
             <h2 className={`fontPreset5`}>{name.toUpperCase()}</h2>

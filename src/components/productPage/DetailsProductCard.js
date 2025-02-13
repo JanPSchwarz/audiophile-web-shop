@@ -2,7 +2,7 @@ import ProductGallery from "./ProductGallery";
 import ProductsPreview from "./ProductsPreview";
 import GoBack from "../general/GoBack";
 import AddToCart from "./AddToCart";
-import StorybokImage from "../general/StorybokImage";
+import StorybokImage from "../general/StoryblokImage";
 
 export default function DetailsProductCard({ product, category }) {
   const {
@@ -41,6 +41,7 @@ export default function DetailsProductCard({ product, category }) {
               defaultSrc={defaultSrc}
               mobileSrc={mobileSrc}
               tabletSrc={tabletSrc}
+              placeholder
               className={`rounded-md`}
             />
           </div>

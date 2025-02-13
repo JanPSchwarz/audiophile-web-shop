@@ -1,5 +1,5 @@
 import LinkButton from "../general/LinkButton";
-import StorybokImage from "../general/StorybokImage";
+import StorybokImage from "../general/StoryblokImage";
 
 export default function CategoryProductCard({ product, reverse, category }) {
   const {

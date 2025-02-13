@@ -1,4 +1,4 @@
-import StorybokImage from "./StorybokImage";
+import StorybokImage from "./StoryblokImage";
 import getAbout from "@/lib/server-side-fetching/fetchAboutContent";
 
 import { StoryblokRichText } from "@storyblok/react";
@@ -21,9 +21,9 @@ export default async function About() {
         <StorybokImage
           defaultSrc={defaultImageSrc}
           tabletSrc={tabletSrc}
+          placeholder
           sizes="(min-width: 1024px) 50vw, 100vw"
           className={`flex-1 rounded-md object-fill`}
-          // fill
           animations={{
             initial: { opacity: 0 },
             animate: { opacity: 1 },

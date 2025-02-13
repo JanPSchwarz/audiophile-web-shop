@@ -29,7 +29,7 @@ export default async function RootLayout({ children, bodyClass }) {
         <StorageProvider>
           <Header />
           <main className={`m-auto max-w-[1500px] overflow-x-hidden px-[6vw]`}>
-            <StyledJsxRegistry>{children}</StyledJsxRegistry>
+            {children}
           </main>
           <Footer />
         </StorageProvider>

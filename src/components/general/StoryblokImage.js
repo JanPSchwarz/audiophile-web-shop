@@ -4,9 +4,11 @@ import useBreakpoints from "@/hooks/useBreakpoints";
 import Image from "next/image";
 import { twMerge } from "tailwind-merge";
 import { motion } from "framer-motion";
-import { forwardRef, useEffect } from "react";
+import { forwardRef } from "react";
+import useSWR from "swr";
+import { fetcher } from "@/utils/SWRfetcher";
 
-export default function StorybokImage({
+export default function StoryblokImage({
   defaultSrc,
   tabletSrc,
   mobileSrc,
@@ -15,37 +17,24 @@ export default function StorybokImage({
   priority,
   sizes,
   animations,
+  placeholder,
   ...props
 }) {
   const singleSource = !mobileSrc && !tabletSrc;
 
   const { isMobile, isTablet } = useBreakpoints({ disable: singleSource });
 
-  useEffect(() => {
-    if (!isMobile) console.log(defaultSource);
-    if (isTablet) console.log("istablet");
-  }, [isMobile, isTablet]);
+  const currentImage =
+    (isMobile && mobileSrc) || (isTablet && tabletSrc) || defaultSrc;
+
+  const currentSource = currentImage.filename;
+
+  const { data } = useSWR(
+    `/api/imagePlaceholder?imageUrl=${encodeURIComponent(currentSource)}`,
+    fetcher,
+  );
 
   const { alt } = defaultSrc;
-
-  const {
-    source: defaultSource,
-    width: defaultWidth,
-    height: defaultHeight,
-  } = processImageData(defaultSrc);
-
-  const {
-    source: tabletSource,
-    width: tabletWidth,
-    height: tabletHeight,
-  } = (tabletSrc && processImageData(tabletSrc)) || {};
-
-  const {
-    source: mobileSource,
-    width: mobileWidth,
-    height: mobileHeight,
-    aspectRatio: mobileRatio,
-  } = (mobileSrc && processImageData(mobileSrc)) || {};
 
   function processImageData(image) {
     const { filename } = image;
@@ -61,7 +50,13 @@ export default function StorybokImage({
     // retrieves webP format over the storybok image-service
     const optimizedSource = `${filename}/m/${width}x${height}`;
 
-    return { ...image, source: optimizedSource, width, height, aspectRatio };
+    return {
+      ...image,
+      source: optimizedSource,
+      width,
+      height,
+      aspectRatio,
+    };
   }
 
   //* creates Image component that excepts motion-framer animation values
@@ -71,46 +66,27 @@ export default function StorybokImage({
     }),
   );
 
-  const FinalImage = ({ src, width, height }) => {
-    return (
+  const { source, width, height } = processImageData(currentImage);
+
+  const { base64 } = data || {};
+
+  return (
+    <>
       <MotionImage
-        alt={alt}
+        src={source}
+        width={width}
+        height={height}
         priority={priority}
         fill={fill}
         className={twMerge(``, className)}
-        src={src}
-        width={width}
-        height={height}
+        placeholder={placeholder && base64 && "blur"}
+        blurDataURL={base64}
         sizes={sizes}
         initial={{ ...animations?.initial }}
         animate={{ ...animations?.animate }}
         transition={{ ...animations?.transition }}
         {...props}
       />
-    );
-  };
-
-  return (
-    <>
-      {isMobile && mobileSrc ? (
-        <FinalImage
-          src={mobileSource}
-          width={!fill && mobileWidth}
-          height={!fill && mobileHeight}
-        />
-      ) : isTablet && tabletSrc ? (
-        <FinalImage
-          src={tabletSource}
-          width={!fill && tabletWidth}
-          height={!fill && tabletHeight}
-        />
-      ) : (
-        <FinalImage
-          src={defaultSource}
-          width={!fill && defaultWidth}
-          height={!fill && defaultHeight}
-        />
-      )}
     </>
   );
 }

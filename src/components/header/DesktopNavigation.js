@@ -3,8 +3,7 @@
 import LinkList from "../general/LinkList";
 import { motion } from "framer-motion";
 import useSWR from "swr";
-
-const fetcher = (...args) => fetch(...args).then((res) => res.json());
+import { fetcher } from "@/utils/SWRfetcher";
 
 export default function DesktopNavigation({ isVisible }) {
   const { data, error, isLoading } = useSWR(`/api/navigation`, fetcher);

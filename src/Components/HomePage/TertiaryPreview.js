@@ -1,4 +1,4 @@
-import StorybokImage from "../general/StorybokImage";
+import StorybokImage from "../general/StoryblokImage";
 import LinkButton from "../general/LinkButton";
 
 export default function TertiaryPreview({ content }) {
@@ -13,6 +13,7 @@ export default function TertiaryPreview({ content }) {
             defaultSrc={defaultSrc}
             sizes="50vw"
             className={`w-full rounded-md object-fill`}
+            placeholder
             animations={{
               initial: { opacity: 0 },
               animate: { opacity: 1 },

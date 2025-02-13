@@ -1,5 +1,5 @@
 import ResponsiveStaticImage from "../general/ResponsiveStaticImage";
-import StorybokImage from "../general/StorybokImage";
+import StorybokImage from "../general/StoryblokImage";
 
 export default function ProductGallery({ images }) {
   const [
@@ -28,12 +28,14 @@ export default function ProductGallery({ images }) {
             defaultSrc={firstImageDesktop}
             tabletSrc={firstImageTablet}
             mobileSrc={firstImageMobile}
+            placeholder
             className={`rounded-md`}
           />
           <StorybokImage
             defaultSrc={secondImageDesktop}
             tabletSrc={secondImageTablet}
             mobileSrc={secondImageMobile}
+            placeholder
             className={`rounded-md`}
           />
         </div>
@@ -41,6 +43,7 @@ export default function ProductGallery({ images }) {
           defaultSrc={thirdImageDesktop}
           tabletSrc={thirdImageTablet}
           mobileSrc={thirdImageMobile}
+          placeholder
           className={`rounded-md`}
         />
       </div>

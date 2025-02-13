@@ -1,11 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import StorybokImage from "./StorybokImage";
+import StorybokImage from "./StoryblokImage";
 import IconArrowRight from "@/assets/svgs/icon-arrow-right.svg";
 import useSWR from "swr";
-
-const fetcher = (...args) => fetch(...args).then((res) => res.json());
+import { fetcher } from "@/utils/SWRfetcher";
 
 export default function CategoryPreviewLinks() {
   const { data, error, isLoading } = useSWR(`/api/categoryLinks`, fetcher);
@@ -16,12 +15,13 @@ export default function CategoryPreviewLinks() {
     <>
       {linkList.map(({ category, image }, i) => {
         return (
-          <Link key={i} className={` w-full`} href={`/${category}`}>
+          <Link key={i} className={`w-full`} href={`/${category}`}>
             <div
               className={`relative flex h-[18vh] max-h-[160px] w-full flex-col items-center justify-end rounded-md bg-lightColor landscape:h-[18vw]`}
             >
               <StorybokImage
                 defaultSrc={image}
+                placeholder
                 className={`absolute w-[clamp(8rem,_20vw,_12rem)] -translate-y-[clamp(10px,_8vh,_80px)] landscape:w-[clamp(8rem,_30vh,_12rem)] landscape:-translate-y-[clamp(10px,_10vw,80px)]`}
               />
               <div
