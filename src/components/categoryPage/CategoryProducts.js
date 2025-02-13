@@ -10,8 +10,6 @@ export default async function CategoryProducts({ category }) {
     .sort((a, b) => b.new - a.new)
     .sort((a, b) => b.price - a.price);
 
-  if (products.length == 0) throw new Error("Loading data not possible.");
-
   return (
     <>
       {products.map((product, index) => {

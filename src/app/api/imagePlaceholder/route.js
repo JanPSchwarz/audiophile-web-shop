@@ -1,9 +1,8 @@
 import { getPlaiceholder } from "plaiceholder";
 import { NextResponse } from "next/server";
 
-export async function GET(request, response) {
+export async function GET(request) {
   const { searchParams } = new URL(request.url);
-  console.log(searchParams.get("imageUrl"));
   const imageUrl = searchParams.get("imageUrl");
 
   if (!imageUrl) {

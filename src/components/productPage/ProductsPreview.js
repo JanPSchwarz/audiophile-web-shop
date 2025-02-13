@@ -4,7 +4,7 @@ import StorybokImage from "../general/StoryblokImage";
 export default function ProductsPreview({ products }) {
   return (
     <>
-      {products.map(({ name, slug, image }, index) => {
+      {products.map(({ name, slug, image, category }, index) => {
         const [
           {
             mobile: [{ image: mobileSrc }],
@@ -31,7 +31,7 @@ export default function ProductsPreview({ products }) {
               text={"SEE PRODUCT"}
               primary
               highlighted
-              href={`/${slug}`}
+              href={`/${category}/${slug}`}
             />
           </div>
         );

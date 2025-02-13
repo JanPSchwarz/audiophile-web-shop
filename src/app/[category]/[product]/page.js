@@ -1,4 +1,3 @@
-import { notFound } from "next/navigation";
 import DetailsProductCard from "@/components/productPage/DetailsProductCard";
 import getProducts from "@/lib/server-side-fetching/fetchProducts";
 
