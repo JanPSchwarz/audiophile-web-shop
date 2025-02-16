@@ -1,13 +1,13 @@
-import ResponsiveStaticImage from "../general/ResponsiveStaticImage";
 import ProductGallery from "./ProductGallery";
 import ProductsPreview from "./ProductsPreview";
 import GoBack from "../general/GoBack";
 import AddToCart from "./AddToCart";
+import StorybokImage from "../general/StoryblokImage";
 
 export default function DetailsProductCard({ product, category }) {
   const {
     new: isNew,
-    image: { mobile: mobileSrc, tablet: tabletSrc, desktop: defaultSrc } = {},
+    image,
     name = "missing data",
     description = "missing data",
     price,
@@ -18,6 +18,19 @@ export default function DetailsProductCard({ product, category }) {
     slug,
   } = product;
 
+  const mobileSrc = image[0]?.mobile[0].image;
+  const tabletSrc = image[1]?.tablet[0].image;
+  const defaultSrc = image[2]?.desktop[0].image;
+
+  const formattedFeaturesText = features.split("\\n").map((item, index) => (
+    <span key={index}>
+      {item}
+      <br />
+    </span>
+  ));
+
+  console.log(others);
+
   return (
     <>
       <div className={`my-4 md:my-8 lg:my-12`}>
@@ -26,20 +39,14 @@ export default function DetailsProductCard({ product, category }) {
       <div className={`flex flex-col gap-16`}>
         <div className={`flex flex-col gap-6 md:flex-row lg:gap-20`}>
           <div className={`md:flex md:flex-1`}>
-            {defaultSrc ? (
-              <ResponsiveStaticImage
-                alt={name}
-                defaultSrc={defaultSrc}
-                mobileSrc={mobileSrc}
-                tabletSrc={tabletSrc}
-                placeholder
-                className={`rounded-md`}
-              />
-            ) : (
-              <p className={`mx-auto my-36 w-full text-center md:my-auto`}>
-                Missing image...
-              </p>
-            )}
+            <StorybokImage
+              defaultSrc={defaultSrc}
+              mobileSrc={mobileSrc}
+              tabletSrc={tabletSrc}
+              priority
+              placeholder
+              className={`rounded-md`}
+            />
           </div>
           <div
             className={`flex flex-col gap-4 md:flex-1 md:justify-evenly md:gap-0`}
@@ -74,7 +81,7 @@ export default function DetailsProductCard({ product, category }) {
             <p
               className={`fontPreset7 whitespace-pre-line text-primaryColor text-opacity-70 lg:text-balance`}
             >
-              {features}
+              {formattedFeaturesText}
             </p>
           </div>
           <div

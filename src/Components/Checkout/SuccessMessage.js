@@ -12,12 +12,12 @@ export default function SuccessMessage({ totalAmount, handleClose }) {
 
   const { cart, emptyCart, stopPropagation } = useStore();
 
-  useEffect(() => {
-    //* empties local storage on dismount
-    return () => {
-      emptyCart();
-    };
-  }, []);
+  // useEffect(() => {
+  //   //* empties local storage on dismount
+  //   return () => {
+  //     emptyCart();
+  //   };
+  // }, []);
 
   useEffect(() => {
     function handleKeyEvent(event) {

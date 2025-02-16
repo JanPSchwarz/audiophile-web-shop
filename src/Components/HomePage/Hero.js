@@ -1,25 +1,25 @@
 import LinkButton from "../general/LinkButton";
-import ResponsiveStaticImage from "../general/ResponsiveStaticImage";
+import StorybokImage from "../general/StoryblokImage";
 
-import HeadphoneImageDesktop from "@/assets/images/home/desktop/image-hero.jpg";
-import HeadphoneImageTablet from "@/assets/images/home/tablet/image-hero.jpg";
-import HeadphoneImageMobile from "@/assets/images/home/mobile/image-hero.jpg";
+export default function Hero({ content }) {
+  const { heading, btn_text, superscript, text, href, image } = content;
 
-export default function Hero() {
+  const mobileSrc = image[0].mobile[0].image;
+  const tabletSrc = image[1].tablet[0].image;
+  const desktopSrc = image[2].desktop[0].image;
+
   return (
     <>
       <div
         className={`relative flex items-center justify-center before:absolute before:top-0 before:z-10 before:h-[1px] before:w-screen before:bg-secondaryColor before:bg-opacity-20 before:content-[""] md:before:w-full lg:justify-start`}
       >
-        <ResponsiveStaticImage
-          alt={"XX 99 Mark II Headphones"}
-          defaultSrc={HeadphoneImageDesktop}
-          tabletSrc={HeadphoneImageTablet}
-          mobileSrc={HeadphoneImageMobile}
-          sizes="100vw"
-          placeholder={true}
-          placeholderClasses={`w-full`}
-          className={`translate-y-[7%] scale-[1.15] object-cover object-bottom brightness-75`}
+        <StorybokImage
+          defaultSrc={desktopSrc}
+          tabletSrc={tabletSrc}
+          mobileSrc={mobileSrc}
+          className={`translate-y-[7%] scale-[1.15] bg-black object-cover object-bottom brightness-75`}
+          priority={true}
+          sizes={"100vw"}
           animations={{
             initial: { filter: "blur(5px)", opacity: 0 },
             animate: { filter: "blur(0)", opacity: 1 },
@@ -36,20 +36,15 @@ export default function Hero() {
             <p
               className={`fontPreset7 tracking-[0.3rem] text-secondaryColor text-opacity-70 md:tracking-[0.6rem]`}
             >
-              NEW PRODUCT
+              {superscript}
             </p>
-            <h2 className={`fontPreset3 md:fontPreset1`}>
-              XX 99 MARK II HEADPHONES
-            </h2>
-            <p className={`fontPreset7 leading-6 md:w-5/6 lg:w-3/5`}>
-              Experience natural, lifelike audio and exceptional build quality
-              made for the passionate music enthusiast.
-            </p>
+            <h2 className={`fontPreset3 md:fontPreset1`}>{heading}</h2>
+            <p className={`fontPreset7 leading-6 md:w-5/6 lg:w-3/5`}>{text}</p>
             <LinkButton
-              href={"headphones/xx99-mark-two-headphones"}
+              href={href}
               primary={true}
               highlighted={true}
-              text={"SEE PRODUCT"}
+              text={btn_text}
               className={``}
             />
           </div>

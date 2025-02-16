@@ -151,6 +151,12 @@ import ZX9_Speaker_Others_MobileImage from "@/assets/images/shared/mobile/image-
 import ZX9_Speaker_Others_TabletImage from "@/assets/images/shared/tablet/image-zx9-speaker.jpg";
 import ZX9_Speaker_Others_DesktopImage from "@/assets/images/shared/desktop/image-zx9-speaker.jpg";
 
+import bestGear from "@/assets/images/shared/tablet/image-best-gear.jpg";
+
+import HeroMobile from "@/assets/images/home/mobile/image-hero.jpg";
+import HeroTablet from "@/assets/images/home/tablet/image-hero.jpg";
+import HeroDesktop from "@/assets/images/home/desktop/image-hero.jpg";
+
 const data = [
   {
     id: 1,

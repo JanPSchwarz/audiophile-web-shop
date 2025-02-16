@@ -1,20 +1,19 @@
-import EarphoneImage from "@/assets/images/home/tablet/image-earphones-yx1.jpg";
-import ResponsiveStaticImage from "../general/ResponsiveStaticImage";
+import StorybokImage from "../general/StoryblokImage";
 import LinkButton from "../general/LinkButton";
 
-export default function TertiaryPreview() {
+export default function TertiaryPreview({ content }) {
+  const { href, image, heading, btn_text } = content;
+
+  const defaultSrc = image[0].image;
   return (
     <>
       <div className={`flex flex-col gap-4 md:flex-row`}>
-        <div
-          className={`relative aspect-[1.69] w-full md:aspect-[1.05] md:flex-1 lg:aspect-[1.69]`}
-        >
-          <ResponsiveStaticImage
-            defaultSrc={EarphoneImage}
+        <div className={`relative w-full md:flex-1`}>
+          <StorybokImage
+            defaultSrc={defaultSrc}
             sizes="50vw"
-            alt={"YX1 Earphones"}
-            fill
-            className={`rounded-md object-cover`}
+            className={`w-full rounded-md object-fill`}
+            placeholder
             animations={{
               initial: { opacity: 0 },
               animate: { opacity: 1 },
@@ -26,8 +25,8 @@ export default function TertiaryPreview() {
           className={`flex w-full items-center justify-start rounded-md bg-gray-100 md:flex-1`}
         >
           <div className={`flex flex-col items-start gap-6 p-[10%]`}>
-            <h2 className={`fontPreset4 text-primaryColor`}>YX1 EARPHONES</h2>
-            <LinkButton href={"earphones/yx1-earphones"} text={"SEE PRODUCT"} />
+            <h2 className={`fontPreset4 text-primaryColor`}>{heading}</h2>
+            <LinkButton href={href} text={btn_text} />
           </div>
         </div>
       </div>

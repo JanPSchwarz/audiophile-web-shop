@@ -1,21 +1,19 @@
-import ResponsiveStaticImage from "../general/ResponsiveStaticImage";
 import LinkButton from "../general/LinkButton";
+import StorybokImage from "../general/StoryblokImage";
 
-export default function CategoryProductCard({ data, reverse, category }) {
+export default function CategoryProductCard({ product, reverse, category }) {
   const {
     id,
-    categoryImage = {},
+    categoryImage,
     description = "missing data",
     name = "missing data",
     slug,
     new: isNew = false,
-  } = data;
+  } = product;
 
-  const {
-    mobile: mobileImage,
-    tablet: tabletImage,
-    desktop: defaultSrc,
-  } = categoryImage;
+  const mobileImage = categoryImage[0]?.mobile[0].image;
+  const tabletImage = categoryImage[1]?.tablet[0].image;
+  const defaultSrc = categoryImage[2]?.desktop[0].image;
 
   return (
     <>
@@ -23,19 +21,13 @@ export default function CategoryProductCard({ data, reverse, category }) {
         className={`lg: flex flex-col items-center justify-center gap-10 ${reverse ? `lg:flex-row-reverse` : `lg:flex-row`} lg:gap-16`}
       >
         <div className={`w-full lg:flex-1`}>
-          {defaultSrc ? (
-            <ResponsiveStaticImage
-              alt={name}
-              defaultSrc={defaultSrc}
-              tabletSrc={tabletImage}
-              mobileSrc={mobileImage}
-              className={`rounded-md`}
-              placeholder={true}
-              placeholderClasses={`w-full border`}
-            />
-          ) : (
-            <p>No image defined</p>
-          )}
+          <StorybokImage
+            defaultSrc={defaultSrc}
+            tabletSrc={tabletImage}
+            mobileSrc={mobileImage}
+            placeholder
+            className={`rounded-md`}
+          />
         </div>
         <div
           className={`flex flex-col items-center justify-center gap-8 text-center lg:flex-1 lg:items-start`}

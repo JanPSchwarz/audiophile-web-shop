@@ -1,9 +1,7 @@
 import "./globals.css";
-import StyledJsxRegistry from "@/registries/styledJSXRegistry";
 import { Manrope } from "next/font/google";
 import Header from "@/components/header/Header";
 import Footer from "@/components/footer/Footer";
-import About from "@/components/general/About";
 import { twMerge } from "tailwind-merge";
 import { StorageProvider } from "@/context/Store";
 
@@ -30,8 +28,7 @@ export default async function RootLayout({ children, bodyClass }) {
         <StorageProvider>
           <Header />
           <main className={`m-auto max-w-[1500px] overflow-x-hidden px-[6vw]`}>
-            <StyledJsxRegistry>{children}</StyledJsxRegistry>
-            <About />
+            {children}
           </main>
           <Footer />
         </StorageProvider>
