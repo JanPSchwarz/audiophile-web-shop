@@ -29,8 +29,6 @@ export default function DetailsProductCard({ product, category }) {
     </span>
   ));
 
-  console.log(others);
-
   return (
     <>
       <div className={`my-4 md:my-8 lg:my-12`}>

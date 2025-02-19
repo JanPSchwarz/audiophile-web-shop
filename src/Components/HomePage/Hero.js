@@ -38,7 +38,7 @@ export default function Hero({ content }) {
             >
               {superscript}
             </p>
-            <h2 className={`fontPreset3 md:fontPreset1`}>{heading}</h2>
+            <h1 className={`fontPreset3 md:fontPreset1`}>{heading}</h1>
             <p className={`fontPreset7 leading-6 md:w-5/6 lg:w-3/5`}>{text}</p>
             <LinkButton
               href={href}

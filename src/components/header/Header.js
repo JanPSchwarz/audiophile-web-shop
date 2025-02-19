@@ -96,7 +96,7 @@ export default function Header() {
           >
             <Link href={"/"} className={`p-1`}>
               <Logo
-                aria-label="Logo, links to Homepage"
+                aria-label="Audiophile Logo"
                 className={`aspect-auto fill-secondaryColor md:scale-110`}
               />
             </Link>

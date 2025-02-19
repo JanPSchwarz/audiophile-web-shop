@@ -14,6 +14,7 @@ export default function NotFound() {
     <>
       <DefaultError
         errorMessage={`404 - requested source doesn't exist:\n\n${url}`}
+        notFound={true}
       />
     </>
   );

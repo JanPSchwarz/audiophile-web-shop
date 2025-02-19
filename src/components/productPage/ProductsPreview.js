@@ -23,7 +23,7 @@ export default function ProductsPreview({ products }) {
               defaultSrc={defaultSrc}
               tabletSrc={tabletSrc}
               mobileSrc={mobileSrc}
-              placeholer
+              placeholder
               className={`rounded-md`}
             />
             <h2 className={`fontPreset5`}>{name.toUpperCase()}</h2>
