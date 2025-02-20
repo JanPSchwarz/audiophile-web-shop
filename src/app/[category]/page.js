@@ -1,5 +1,5 @@
 import CategorySkeleton from "@/components/categoryPage/LoadingCategory";
-import getProducts from "@/lib/server-side-fetching/fetchProducts";
+import getProducts from "@/utils/server-side-fetching/fetchProducts";
 import PreviewProductCard from "@/components/categoryPage/PreviewProductCard";
 import { Suspense } from "react";
 import { notFound } from "next/navigation";

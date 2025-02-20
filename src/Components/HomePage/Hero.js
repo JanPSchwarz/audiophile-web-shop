@@ -1,7 +1,7 @@
 import LinkButton from "../general/LinkButton";
 import StorybokImage from "../general/StoryblokImage";
 
-export default function Hero({ content }) {
+export default async function Hero({ content }) {
   const { heading, btn_text, superscript, text, href, image } = content;
 
   const mobileSrc = image[0].mobile[0].image;

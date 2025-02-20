@@ -1,5 +1,5 @@
 import DetailsProductCard from "@/components/productPage/DetailsProductCard";
-import getProducts from "@/lib/server-side-fetching/fetchProducts";
+import getProducts from "@/utils/server-side-fetching/fetchProducts";
 import { notFound } from "next/navigation";
 
 export default async function DetailPage({ params }) {

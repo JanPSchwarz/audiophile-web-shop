@@ -1,21 +1,20 @@
 import LinkButton from "../general/LinkButton";
 import StorybokImage from "../general/StoryblokImage";
+import extractSourcesWithPlaceholders from "@/utils/extractSources";
 
-export default function SecondaryPreview({ content }) {
+export default async function SecondaryPreview({ content }) {
   const { href, image, heading, btn_text } = content;
 
-  const mobileSrc = image[0].mobile[0].image;
-  const tabletSrc = image[1].tablet[0].image;
-  const desktopSrc = image[2].desktop[0].image;
+  const [mobileSrc, tabletSrc, defaultSrc] =
+    await extractSourcesWithPlaceholders(image);
 
   return (
     <>
       <div className={`relative flex w-full`}>
         <StorybokImage
-          defaultSrc={desktopSrc}
+          defaultSrc={defaultSrc}
           tabletSrc={tabletSrc}
           mobileSrc={mobileSrc}
-          placeholder
           sizes="100vw"
           className={`w-full rounded-md`}
           animations={{

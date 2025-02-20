@@ -21,7 +21,6 @@ export default function CategoryPreviewLinks() {
             >
               <StorybokImage
                 defaultSrc={image}
-                placeholder
                 className={`absolute w-[clamp(8rem,_20vw,_12rem)] -translate-y-[clamp(10px,_8vh,_80px)] landscape:w-[clamp(8rem,_30vh,_12rem)] landscape:-translate-y-[clamp(10px,_10vw,80px)]`}
               />
               <div

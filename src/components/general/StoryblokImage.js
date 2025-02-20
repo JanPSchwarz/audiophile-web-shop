@@ -5,8 +5,6 @@ import Image from "next/image";
 import { twMerge } from "tailwind-merge";
 import { motion } from "framer-motion";
 import { forwardRef } from "react";
-import useSWR from "swr";
-import { fetcher } from "@/utils/SWRfetcher";
 
 export default function StoryblokImage({
   defaultSrc,
@@ -17,7 +15,6 @@ export default function StoryblokImage({
   priority,
   sizes,
   animations,
-  placeholder,
   ...props
 }) {
   const singleSource = !mobileSrc && !tabletSrc;
@@ -26,13 +23,6 @@ export default function StoryblokImage({
 
   const currentImage =
     (isMobile && mobileSrc) || (isTablet && tabletSrc) || defaultSrc;
-
-  const currentSource = currentImage.filename;
-
-  const { data } = useSWR(
-    `/api/imagePlaceholder?imageUrl=${encodeURIComponent(currentSource)}`,
-    fetcher,
-  );
 
   const { alt } = defaultSrc;
 
@@ -66,9 +56,7 @@ export default function StoryblokImage({
     }),
   );
 
-  const { source, width, height } = processImageData(currentImage);
-
-  const { base64 } = data || {};
+  const { source, width, height, blurData } = processImageData(currentImage);
 
   return (
     <>
@@ -79,9 +67,9 @@ export default function StoryblokImage({
         priority={priority}
         fill={fill}
         className={twMerge(``, className)}
-        placeholder={placeholder && base64 && "blur"}
-        blurDataURL={base64}
         sizes={sizes}
+        placeholder={blurData && "blur"}
+        blurDataURL={blurData}
         initial={{ ...animations?.initial }}
         animate={{ ...animations?.animate }}
         transition={{ ...animations?.transition }}

@@ -1,8 +1,8 @@
 import LinkList from "../general/LinkList";
 import Socials from "./Socials";
 
-import getFooterContent from "@/lib/server-side-fetching/fetchFooterContent";
-import getNavigationContent from "@/lib/server-side-fetching/fetchNavigationContent";
+import getFooterContent from "@/utils/server-side-fetching/fetchFooterContent";
+import getNavigationContent from "@/utils/server-side-fetching/fetchNavigationContent";
 
 import Logo from "@/assets/svgs/logo.svg";
 import InstagramIcon from "@/assets/svgs/icon-instagram.svg";
