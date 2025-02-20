@@ -14,6 +14,8 @@ export default async function DetailPage({ params }) {
 
   if (productData.length === 0) notFound();
 
+  let test;
+
   return (
     <>
       <DetailsProductCard category={categoryParam} product={productData[0]} />
