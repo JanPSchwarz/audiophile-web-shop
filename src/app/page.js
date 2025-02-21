@@ -3,7 +3,7 @@ import Hero from "@/components/homePage/Hero";
 import PrimaryPreview from "@/components/homePage/PrimaryPreview";
 import SecondaryPreview from "@/components/homePage/SecondaryPreview";
 import TertiaryPreview from "@/components/homePage/TertiaryPreview";
-import getLandingPageContent from "@/lib/server-side-fetching/fetchLandingPageContent";
+import getLandingPageContent from "@/utils/server-side-fetching/fetchLandingPageContent";
 import About from "@/components/general/About";
 
 export default async function Home() {

@@ -4,17 +4,19 @@ import ErrorSvg from "@/assets/svgs/alert-circle-outline.svg";
 import LinkButton from "./LinkButton";
 import { useRouter } from "next/navigation";
 
-export default function DefaultError({ reset, errorMessage }) {
+export default function DefaultError({ reset, errorMessage, notFound }) {
   const router = useRouter();
   console.log(errorMessage);
   return (
     <>
       <div
-        className={`my-16 flex flex-col items-center justify-center gap-16 lg:w-3/4`}
+        className={`mx-auto my-16 flex flex-col items-center justify-center gap-16 lg:w-3/4`}
       >
-        <h2 className={`md:fontPreset3 fontPreset4`}>
-          Sorry, there was a mistake loading the resource.
-        </h2>
+        <h1 className={`md:fontPreset3 fontPreset4`}>
+          {notFound
+            ? `The requested URL is not available...`
+            : `Sorry, there was an error...`}
+        </h1>
         <div
           className={`flex w-full flex-col items-center justify-center gap-4 md:flex-row landscape:flex-row`}
         >

@@ -3,8 +3,9 @@ import ProductsPreview from "./ProductsPreview";
 import GoBack from "../general/GoBack";
 import AddToCart from "./AddToCart";
 import StorybokImage from "../general/StoryblokImage";
+import extractSourcesWithPlaceholders from "@/utils/extractSources";
 
-export default function DetailsProductCard({ product, category }) {
+export default async function DetailsProductCard({ product, category }) {
   const {
     new: isNew,
     image,
@@ -18,9 +19,8 @@ export default function DetailsProductCard({ product, category }) {
     slug,
   } = product;
 
-  const mobileSrc = image[0]?.mobile[0].image;
-  const tabletSrc = image[1]?.tablet[0].image;
-  const defaultSrc = image[2]?.desktop[0].image;
+  const [mobileSrc, tabletSrc, defaultSrc] =
+    await extractSourcesWithPlaceholders(image);
 
   const formattedFeaturesText = features.split("\\n").map((item, index) => (
     <span key={index}>
@@ -28,8 +28,6 @@ export default function DetailsProductCard({ product, category }) {
       <br />
     </span>
   ));
-
-  console.log(others);
 
   return (
     <>
@@ -41,10 +39,9 @@ export default function DetailsProductCard({ product, category }) {
           <div className={`md:flex md:flex-1`}>
             <StorybokImage
               defaultSrc={defaultSrc}
-              mobileSrc={mobileSrc}
               tabletSrc={tabletSrc}
+              mobileSrc={mobileSrc}
               priority
-              placeholder
               className={`rounded-md`}
             />
           </div>

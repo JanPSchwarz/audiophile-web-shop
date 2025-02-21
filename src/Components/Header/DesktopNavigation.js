@@ -12,16 +12,14 @@ export default function DesktopNavigation({ isVisible }) {
 
   return (
     <>
-      {isVisible && (
-        <motion.nav
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
-          className={`flex justify-around`}
-        >
-          <LinkList links={links} />
-        </motion.nav>
-      )}
+      <motion.nav
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
+        className={`flex justify-around ${isVisible ? `visible` : `hidden`}`}
+      >
+        <LinkList links={links} />
+      </motion.nav>
     </>
   );
 }

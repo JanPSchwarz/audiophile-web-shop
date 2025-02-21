@@ -1,21 +1,13 @@
 import LinkButton from "../general/LinkButton";
 import StorybokImage from "../general/StoryblokImage";
+import extractSourcesWithPlaceholders from "@/utils/extractSources";
 
-export default function ProductsPreview({ products }) {
+export default async function ProductsPreview({ products }) {
   return (
     <>
-      {products.map(({ name, slug, image, category }, index) => {
-        const [
-          {
-            mobile: [{ image: mobileSrc }],
-          },
-          {
-            tablet: [{ image: tabletSrc }],
-          },
-          {
-            desktop: [{ image: defaultSrc }],
-          },
-        ] = image;
+      {products.map(async ({ name, slug, image, category }, index) => {
+        const [mobileSrc, tabletSrc, defaultSrc] =
+          await extractSourcesWithPlaceholders(image);
 
         return (
           <div key={index} className={`my-8 flex flex-col items-center gap-6`}>
@@ -23,7 +15,6 @@ export default function ProductsPreview({ products }) {
               defaultSrc={defaultSrc}
               tabletSrc={tabletSrc}
               mobileSrc={mobileSrc}
-              placeholer
               className={`rounded-md`}
             />
             <h2 className={`fontPreset5`}>{name.toUpperCase()}</h2>

@@ -1,5 +1,6 @@
 import StorybokImage from "./StoryblokImage";
-import getAbout from "@/lib/server-side-fetching/fetchAboutContent";
+import getAbout from "@/utils/server-side-fetching/fetchAboutContent";
+import getPlaceholder from "@/utils/getPlaceholder";
 
 import { StoryblokRichText } from "@storyblok/react";
 
@@ -10,8 +11,11 @@ export default async function About() {
 
   const text = data.text;
 
-  const defaultImageSrc = data.image[1].image;
+  const desktopSrc = data.image[1].image;
   const tabletSrc = data.image[2].image;
+
+  const desktopPlaceholder = await getPlaceholder(desktopSrc.filename);
+  const tabletPlaceholder = await getPlaceholder(tabletSrc.filename);
 
   return (
     <>
@@ -19,9 +23,8 @@ export default async function About() {
         className={`my-32 flex flex-col items-center justify-center gap-10 lg:flex-row-reverse`}
       >
         <StorybokImage
-          defaultSrc={defaultImageSrc}
-          tabletSrc={tabletSrc}
-          placeholder
+          defaultSrc={{ ...desktopSrc, blurData: desktopPlaceholder }}
+          tabletSrc={{ ...tabletSrc, blurData: tabletPlaceholder }}
           sizes="(min-width: 1024px) 50vw, 100vw"
           className={`flex-1 rounded-md object-fill`}
           animations={{

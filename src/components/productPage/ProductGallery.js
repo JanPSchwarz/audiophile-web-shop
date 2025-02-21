@@ -1,24 +1,27 @@
-import ResponsiveStaticImage from "../general/ResponsiveStaticImage";
 import StorybokImage from "../general/StoryblokImage";
+import extractSourcesWithPlaceholders from "@/utils/extractSources";
 
-export default function ProductGallery({ images }) {
+export default async function ProductGallery({ images }) {
   const [
     { first: firstImage },
     { second: secondImage },
     { third: thirdImage },
   ] = images;
 
-  const firstImageMobile = firstImage[0]?.mobile[0].image;
-  const firstImageTablet = firstImage[1]?.tablet[0].image;
-  const firstImageDesktop = firstImage[2]?.desktop[0].image;
+  // const [firstImages, secondImages, thirdImages] = await Promise.all([
+  //   extractSourcesWithPlaceholders(firstImage),
+  //   extractSourcesWithPlaceholders(secondImage),
+  //   extractSourcesWithPlaceholders(thirdImage),
+  // ]);
 
-  const secondImageMobile = secondImage[0]?.mobile[0].image;
-  const secondImageTablet = secondImage[1]?.tablet[0].image;
-  const secondImageDesktop = secondImage[2]?.desktop[0].image;
+  const firstImages = await extractSourcesWithPlaceholders(firstImage);
+  const secondImages = await extractSourcesWithPlaceholders(secondImage);
+  const thirdImages = await extractSourcesWithPlaceholders(thirdImage);
 
-  const thirdImageMobile = thirdImage[0]?.mobile[0].image;
-  const thirdImageTablet = thirdImage[1]?.tablet[0].image;
-  const thirdImageDesktop = thirdImage[2]?.desktop[0].image;
+  const [firstImageMobile, firstImageTablet, firstImageDesktop] = firstImages;
+  const [secondImageMobile, secondImageTablet, secondImageDesktop] =
+    secondImages;
+  const [thirdImageMobile, thirdImageTablet, thirdImageDesktop] = thirdImages;
 
   return (
     <>
@@ -28,14 +31,12 @@ export default function ProductGallery({ images }) {
             defaultSrc={firstImageDesktop}
             tabletSrc={firstImageTablet}
             mobileSrc={firstImageMobile}
-            placeholder
             className={`rounded-md`}
           />
           <StorybokImage
             defaultSrc={secondImageDesktop}
             tabletSrc={secondImageTablet}
             mobileSrc={secondImageMobile}
-            placeholder
             className={`rounded-md`}
           />
         </div>
@@ -43,7 +44,6 @@ export default function ProductGallery({ images }) {
           defaultSrc={thirdImageDesktop}
           tabletSrc={thirdImageTablet}
           mobileSrc={thirdImageMobile}
-          placeholder
           className={`rounded-md`}
         />
       </div>

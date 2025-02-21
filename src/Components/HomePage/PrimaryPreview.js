@@ -1,8 +1,9 @@
 import LinkButton from "../general/LinkButton";
 import Circles from "@/assets/svgs/pattern-circles.svg";
 import StorybokImage from "../general/StoryblokImage";
+import getPlaceholder from "@/utils/getPlaceholder";
 
-export default function PrimaryPreview({ content }) {
+export default async function PrimaryPreview({ content }) {
   const { text, href, image, heading, btn_text } = content;
 
   const firstPartHeading = heading.split(" ")[0];
@@ -10,14 +11,15 @@ export default function PrimaryPreview({ content }) {
 
   const desktopSrc = image[0].image;
 
+  const defaultPlaceholder = await getPlaceholder(desktopSrc.filename);
+
   return (
     <>
       <div
         className={`relative flex items-center justify-center lg:flex-1 lg:translate-y-12 lg:items-end`}
       >
         <StorybokImage
-          defaultSrc={desktopSrc}
-          placeholder
+          defaultSrc={{ ...desktopSrc, blurData: defaultPlaceholder }}
           className={`z-20 w-[clamp(10rem,_50vw,_24rem)] landscape:w-[clamp(10rem,_70vh,_48rem)]`}
           animations={{
             initial: { opacity: 0 },

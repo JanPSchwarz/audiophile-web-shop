@@ -1,10 +1,14 @@
 import StorybokImage from "../general/StoryblokImage";
 import LinkButton from "../general/LinkButton";
+import getPlaceholder from "@/utils/getPlaceholder";
 
-export default function TertiaryPreview({ content }) {
+export default async function TertiaryPreview({ content }) {
   const { href, image, heading, btn_text } = content;
 
   const defaultSrc = image[0].image;
+
+  const defaultPlaceholder = await getPlaceholder(defaultSrc.filename);
+
   return (
     <>
       <div className={`flex flex-col gap-4 md:flex-row`}>
@@ -13,7 +17,6 @@ export default function TertiaryPreview({ content }) {
             defaultSrc={defaultSrc}
             sizes="50vw"
             className={`w-full rounded-md object-fill`}
-            placeholder
             animations={{
               initial: { opacity: 0 },
               animate: { opacity: 1 },

@@ -1,7 +1,7 @@
 import LinkButton from "../general/LinkButton";
 import StorybokImage from "../general/StoryblokImage";
 
-export default function Hero({ content }) {
+export default async function Hero({ content }) {
   const { heading, btn_text, superscript, text, href, image } = content;
 
   const mobileSrc = image[0].mobile[0].image;
@@ -38,7 +38,7 @@ export default function Hero({ content }) {
             >
               {superscript}
             </p>
-            <h2 className={`fontPreset3 md:fontPreset1`}>{heading}</h2>
+            <h1 className={`fontPreset3 md:fontPreset1`}>{heading}</h1>
             <p className={`fontPreset7 leading-6 md:w-5/6 lg:w-3/5`}>{text}</p>
             <LinkButton
               href={href}

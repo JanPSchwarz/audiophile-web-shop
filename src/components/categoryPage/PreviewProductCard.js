@@ -1,7 +1,12 @@
 import LinkButton from "../general/LinkButton";
 import StorybokImage from "../general/StoryblokImage";
+import extractSourcesWithPlaceholders from "@/utils/extractSources";
 
-export default function CategoryProductCard({ product, reverse, category }) {
+export default async function CategoryProductCard({
+  product,
+  reverse,
+  category,
+}) {
   const {
     id,
     categoryImage,
@@ -11,9 +16,8 @@ export default function CategoryProductCard({ product, reverse, category }) {
     new: isNew = false,
   } = product;
 
-  const mobileImage = categoryImage[0]?.mobile[0].image;
-  const tabletImage = categoryImage[1]?.tablet[0].image;
-  const defaultSrc = categoryImage[2]?.desktop[0].image;
+  const [mobileSrc, tabletSrc, defaultSrc] =
+    await extractSourcesWithPlaceholders(categoryImage);
 
   return (
     <>
@@ -23,9 +27,8 @@ export default function CategoryProductCard({ product, reverse, category }) {
         <div className={`w-full lg:flex-1`}>
           <StorybokImage
             defaultSrc={defaultSrc}
-            tabletSrc={tabletImage}
-            mobileSrc={mobileImage}
-            placeholder
+            tabletSrc={tabletSrc}
+            mobileSrc={mobileSrc}
             className={`rounded-md`}
           />
         </div>
